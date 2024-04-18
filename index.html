@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Styles/styles.css">
+    <title>Cavernicola</title>
+</head>
+<body class="page winOff">
+    <div class="game_container">
+
+        <div class="messages item itemInfo">
+            <div class="msgsTop">
+                <p class="lives">Lives: <span class="livesSpan"></span></p>
+                <p class="time">Time: <span class="timeSpan"></span></p>
+                <!-- <p class="level">Stage: <span class="levelSpan"></span></p> -->
+            </div>
+            <div class="msgsTop">
+                <p class="stage">Stage: <span class="stageSpan"></span></p>
+                <p class="level">Level: <span class="levelSpan"></span></p>
+                <!-- <p class="record">Record: <span class="recordSpan"></span></p> -->
+            </div>
+        </div>
+
+        <object class="winMessage item itemMess"></object>
+
+        <canvas id="game" class="winOff item itemGame"></canvas>
+
+        
+        <div class="btns item itemBtns">
+            <img id="left" class="btn"></img>
+            <div class="upDown">
+                <img id="up" class="btn"></img>
+                <img id="down" class="btn"></img>
+            </div>
+            <img id="right" class="btn"></img>
+        </div>
+
+    </div>
+
+    <script src="./Scripts/maps.js"></script>
+    <script src="./Scripts/game.js"></script>
+</body>
+</html>
