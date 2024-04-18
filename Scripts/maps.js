@@ -1,33 +1,33 @@
 const mapsImgs = {
-    "Magma1": "https://i.ibb.co/LQjYBQn/Magma-level-1.png",
-    "Magma2": "https://i.ibb.co/yySKrGh/Magma-level-2.png",
-    "Magma3": "https://i.ibb.co/N97fKkZ/Magma-level-3.png",
-    "Magma4": "https://i.ibb.co/5rKBNGw/Magma-level-4.png",
-    "Magma5": "https://i.ibb.co/Sfm5vbX/Magma-level-5.png",
+    "Magma1": "https://i.ibb.co/ngd2xcp/Magma-level-1.jpg",
+    "Magma2": "https://i.ibb.co/G9SbBQB/Magma-level-2.jpg",
+    "Magma3": "https://i.ibb.co/WVnt62j/Magma-level-3.jpg",
+    "Magma4": "https://i.ibb.co/tsJrVXz/Magma-level-4.jpg",
+    "Magma5": "https://i.ibb.co/Qn9Qq7J/Magma-level-5.jpg",
 
-    "Water1": "https://i.ibb.co/MRKBcT3/Water-level-1.png",
-    "Water2": "https://i.ibb.co/vXPXzS6/Water-level-2.png",
-    "Water3": "https://i.ibb.co/j5R4RXL/Water-level-3.png",
-    "Water4": "https://i.ibb.co/tYRtBVy/Water-level-4.png",
-    "Water5": "https://i.ibb.co/qNqf527/Water-level-5.png",
+    "Water1": "https://i.ibb.co/NNX6hRR/Water-level-1.jpg",
+    "Water2": "https://i.ibb.co/g9pYLfC/Water-level-2.jpg",
+    "Water3": "https://i.ibb.co/8M7y09w/Water-level-3.jpg",
+    "Water4": "https://i.ibb.co/CBXk9sb/Water-level-4.jpg",
+    "Water5": "https://i.ibb.co/ySLXyVr/Water-level-5.jpg",
 
-    "Snow1": "https://i.ibb.co/yqVzdN0/Snow-level-1.png",
-    "Snow2": "https://i.ibb.co/k1p4RWy/Snow-level-2.png",
-    "Snow3": "https://i.ibb.co/y8JgL5m/Snow-level-3.png",
-    "Snow4": "https://i.ibb.co/1mjY1jN/Snow-level-4.png",
-    "Snow5": "https://i.ibb.co/RztNYDQ/Snow-level-5.png",
+    "Snow1": "https://i.ibb.co/d7WrNvc/Snow-level-1.jpg",
+    "Snow2": "https://i.ibb.co/kHW4N32/Snow-level-2.jpg",
+    "Snow3": "https://i.ibb.co/8cJDK60/Snow-level-3.jpg",
+    "Snow4": "https://i.ibb.co/fQtbDHM/Snow-level-4.jpg",
+    "Snow5": "https://i.ibb.co/qdqgJpM/Snow-level-5.jpg",
 
-    "Sand1": "https://i.ibb.co/xqBdKVR/Sand-level-1.png",
-    "Sand2": "https://i.ibb.co/mX6SrQz/Sand-level-2.png",
-    "Sand3": "https://i.ibb.co/wNvQmxw/Sand-level-3.png",
-    "Sand4": "https://i.ibb.co/CQZmY3S/Sand-level-4.png",
-    "Sand5": "https://i.ibb.co/zNdPb16/Sand-level-5.png",
+    "Sand1": "https://i.ibb.co/bHKbs9X/Sand-level-1.jpg",
+    "Sand2": "https://i.ibb.co/cD752Kn/Sand-level-2.jpg",
+    "Sand3": "https://i.ibb.co/717CyRX/Sand-level-3.jpg",
+    "Sand4": "https://i.ibb.co/crH5BhB/Sand-level-4.jpg",
+    "Sand5": "https://i.ibb.co/p2g2b4P/Sand-level-5.jpg",
 
-    "Jungle1": "https://i.ibb.co/rbwGT6y/Jungle-level-1.png",
-    "Jungle2": "https://i.ibb.co/8zSFs6F/Jungle-level-2.png",
-    "Jungle3": "https://i.ibb.co/Pc3dyG1/Jungle-level-3.png",
-    "Jungle4": "https://i.ibb.co/m6c5Vxm/Jungle-level-4.png",
-    "Jungle5": "https://i.ibb.co/p0Zs8MC/Jungle-level-5.png",
+    "Jungle1": "https://i.ibb.co/r4Jxn9d/Jungle-level-1.jpg",
+    "Jungle2": "https://i.ibb.co/RBXbw1d/Jungle-level-2.jpg",
+    "Jungle3": "https://i.ibb.co/m0fPwL3/Jungle-level-3.jpg",
+    "Jungle4": "https://i.ibb.co/Jvvb5ZZ/Jungle-level-4.jpg",
+    "Jungle5": "https://i.ibb.co/X5YmX6Q/Jungle-level-5.jpg",
 };
 
 // --- banners ---
@@ -133,9 +133,9 @@ function loadMaps(obj){
         else{
             for(let i = 1; i < 6; i++){
                 let map = new Image();
-                // let srcInfo = mapsImgs[name + i];
-                // map.src = srcInfo;
-                map.src = "../assets/stages_maps/" + name + "_level_" + i + ".png";
+                let srcInfo = mapsImgs[name + i];
+                map.src = srcInfo;
+                // map.src = "../assets/stages_maps/" + name + "_level_" + i + ".png";
                 arrayMap.push(map);
             }
             let obj = {};
