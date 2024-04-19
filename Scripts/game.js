@@ -305,7 +305,7 @@ function disableBtns(){
     down.removeEventListener("click", btnDown);
     right.removeEventListener("click", btnRight);
     btn.forEach(btnR => btnR.removeAttribute("src"));
-    btn.forEach(btnR => btnR.setAttribute("src", "../assets/arrows/upDissabled.png"));
+    btn.forEach(btnR => btnR.setAttribute("src", "./assets/arrows/upDissabled.png"));
 };
 function enableBtns(){
     document.addEventListener("keyup" ,escuchador);
@@ -315,7 +315,7 @@ function enableBtns(){
     down.addEventListener("click", btnDown);
     right.addEventListener("click", btnRight);
     btn.forEach(btnR => btnR.removeAttribute("src"));
-    btn.forEach(btnR => btnR.setAttribute("src", "../assets/arrows/up.png"));
+    btn.forEach(btnR => btnR.setAttribute("src", "./assets/arrows/up.png"));
 };
 function disableBtnsMsgs(){
     btnExitWindow.disabled = true;
@@ -336,7 +336,7 @@ function enableBtnsMsgs(){
 function printLives(){
     livesMsg.innerHTML = "";
     let arrayLives = [];
-    arrayLives = Array(lives).fill("../assets/icons_lives/happy_live.png");
+    arrayLives = Array(lives).fill("./assets/icons_lives/happy_live.png");
 
     if(arrayLives.length > 3){
         let iconCavMen = new Image();
@@ -652,7 +652,7 @@ function printcount(){
     }else{
         clearInterval(intervIncre);
         if(totalTimeLeft >= 100) {
-            priceImg.setAttribute("src", "../assets/icons_lives/1up.svg");
+            priceImg.setAttribute("src", "./assets/icons_lives/1up.svg");
             priceImg.classList.add("priceImg");
             lives++;
             printLives();
