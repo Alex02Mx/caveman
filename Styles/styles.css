@@ -244,22 +244,15 @@ canvas{
     }
 }
 .priceCont {
-    width: 60px;
-    height: 60px;
-}
-.priceImg img {
-    width: 60px;
-}
-.priceImg {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
+    width: auto;
     height: 60px;
-    color: #ffffff;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 22px;
-    font-weight: bold;
+}
+.cl1up {
+    width: 60px;
+    height: auto;
     animation: one_up 2s ease-in 0s 1;
 }
 @keyframes one_up {
@@ -276,6 +269,45 @@ canvas{
         transform: scale(1) rotate(360deg);
     }
 }
+.cl20sec {
+    width: auto;
+    height: 40px;
+    animation: sec_20 1s ease-in 0s 1;
+}
+@keyframes sec_20 {
+    0% {
+        transform: scale(0);
+    }
+    33% {
+        transform: scale(1);
+    }
+    66% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.clnoEnough {
+    width: auto;
+    height: 45px;
+    animation: no_enough 1s ease-in 0s 1;
+}
+@keyframes no_enough {
+    0% {
+        transform: scale(0);
+    }
+    33% {
+        transform: scale(1);
+    }
+    66% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .winOff {
     display: none;
 }

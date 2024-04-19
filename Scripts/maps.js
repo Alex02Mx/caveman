@@ -31,38 +31,38 @@ const mapsImgs = {
 };
 
 // --- banners ---
-let imgBanCaveman = "./assets/banners/the_caveman_banner.png";
-let imgBanTimeUP = "./assets/banners/time_up_banner.png";
-let imgBanGameOver = "./assets/banners/game_over_banner.png";
-let imgBanLevCompleted = "./assets/banners/stagel_completed_banner.png";
-let imgBanWinner = "./assets/banners/winner_banner.png";
+let imgBanCaveman = "https://i.ibb.co/S3DhLbb/the-caveman-banner.png";
+let imgBanTimeUP = "https://i.ibb.co/KG0W0Zm/time-up-banner.png";
+let imgBanGameOver = "https://i.ibb.co/hs2Gy6d/game-over-banner.png";
+let imgBanLevCompleted = "https://i.ibb.co/6JSZk13/stagel-completed-banner.png";
+let imgBanWinner = "https://i.ibb.co/1MDRC1z/winner-banner.png";
 // --- caveman status ---
-let imgStart = "./assets/status/confuse.png"
-let imgGameOver = "./assets/status/game_over.png";
-let imgTime = "./assets/status/crying.png";
-let imgWinner = "./assets/status/win.png";
+let imgStart = "https://i.ibb.co/DMpj4jL/confuse.png"
+let imgGameOver = "https://i.ibb.co/F6JCQRh/game-over.png";
+let imgTime = "https://i.ibb.co/NpB93CX/crying.png";
+let imgWinner = "https://i.ibb.co/bWgJFRF/win.png";
 
 // --- Caveman ----
 // --- Walk ---
 let imgCavMan = new Image();
-imgCavMan.src = "./assets/caveman/walk_3.png";
+imgCavMan.src = "https://i.ibb.co/wrSDrcX/walk-1.png";
 
 // --- falling ---
 // --- fire ---
 let imgFallingFire = new Image();
-imgFallingFire.src = "./assets/caveman/falling_fire.png";
+imgFallingFire.src = "https://i.ibb.co/M5bb0Qc/falling-fire.png";
 // --- water ---
 let imgFallingWater = new Image();
-imgFallingWater.src = "./assets/caveman/falling_water.png";
+imgFallingWater.src = "https://i.ibb.co/JdQ55wB/falling-water.png";
 // --- snow ---
 let imgFallingSnow = new Image();
-imgFallingSnow.src = "./assets/caveman/falling_snow.png";
+imgFallingSnow.src = "https://i.ibb.co/F7Xxhh2/falling-snow.png";
 // --- sand ---
 let imgFallingSand = new Image();
-imgFallingSand.src = "./assets/caveman/falling_sand.png";
+imgFallingSand.src = "https://i.ibb.co/xjTKfy4/falling-sand.png";
 // --- jungle ---
 let imgFallingJungle = new Image();
-imgFallingJungle.src = "./assets/caveman/falling_jungle.png";
+imgFallingJungle.src = "https://i.ibb.co/XyKK2Hn/falling-jungle.png";
 
 // --- Valores en ventana de mensajes ---
 const messagesValues = [];

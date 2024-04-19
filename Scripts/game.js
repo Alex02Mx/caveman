@@ -31,7 +31,8 @@ const playerPos = {
     x: undefined,
     y: undefined
 };
-const priceImg = document.createElement("img");
+let priceCont;
+let priceValue;
 const totalTimeParr = document.createElement("p");
 // --- variables ---
 let recordPos = false;
@@ -305,7 +306,7 @@ function disableBtns(){
     down.removeEventListener("click", btnDown);
     right.removeEventListener("click", btnRight);
     btn.forEach(btnR => btnR.removeAttribute("src"));
-    btn.forEach(btnR => btnR.setAttribute("src", "./assets/arrows/upDissabled.png"));
+    btn.forEach(btnR => btnR.setAttribute("src", "https://i.ibb.co/JkGBhcz/up-Dissabled.png"));
 };
 function enableBtns(){
     document.addEventListener("keyup" ,escuchador);
@@ -315,7 +316,7 @@ function enableBtns(){
     down.addEventListener("click", btnDown);
     right.addEventListener("click", btnRight);
     btn.forEach(btnR => btnR.removeAttribute("src"));
-    btn.forEach(btnR => btnR.setAttribute("src", "./assets/arrows/up.png"));
+    btn.forEach(btnR => btnR.setAttribute("src", "https://i.ibb.co/v4PVny5/up.png"));
 };
 function disableBtnsMsgs(){
     btnExitWindow.disabled = true;
@@ -332,11 +333,10 @@ function enableBtnsMsgs(){
 };
 
 
-
 function printLives(){
     livesMsg.innerHTML = "";
     let arrayLives = [];
-    arrayLives = Array(lives).fill("./assets/icons_lives/happy_live.png");
+    arrayLives = Array(lives).fill("https://i.ibb.co/Tq0JTn4/happy-live.png");
 
     if(arrayLives.length > 3){
         let iconCavMen = new Image();
@@ -359,6 +359,7 @@ function printLevel(){
     stageMsg.innerHTML = stageName;
     levelMsg.innerHTML = level;
 };
+
 
 function movePlayer() {
     const colisionRoca = arrayObst.find((pos)=> {
@@ -393,6 +394,7 @@ function movePlayer() {
         restore();
     }
 };
+
 
 function fillObjLevels(){
     objSeconds[level] = timeMsg.innerHTML;
@@ -531,8 +533,8 @@ function levelPassWindow(){
     recordPos = false;
     disableBtns();
 
-    priceImg.classList.remove("priceImg");
-    priceImg.removeAttribute("src");
+    // priceImg.classList.remove("priceImg");
+    // priceImg.removeAttribute("src");
     totalTimeLeft = 0;
     winMessage.innerHTML = "";
 
@@ -580,9 +582,9 @@ function levelPassWindow(){
     totalTimeCont.classList.add("totalTimContainer");
     totalTimeCont.append(totalTimeParr);
 
-    const priceCont = document.createElement("div");
+    priceCont = document.createElement("div");
     priceCont.classList.add("priceCont");
-    priceCont.append(priceImg);
+    // priceCont.append(priceValue);
 
 
     const btnStatusWindowCont = document.createElement("div");
@@ -610,7 +612,7 @@ function defaulValues(){
     timeStart = undefined;
     objSeconds = {};
     numIncr = 0;
-    priceImg.removeAttribute("src");
+    // priceImg.removeAttribute("src");
     playerPos["x"] = undefined;
     playerPos["y"] = undefined;
 }
@@ -650,18 +652,28 @@ function printcount(){
         numIncr++;
         totalTimeParr.innerHTML = `Total Time Left = ${numIncr}`;
     }else{
+        priceValue = "";
         clearInterval(intervIncre);
+
         if(totalTimeLeft >= 100) {
-            priceImg.setAttribute("src", "./assets/icons_lives/1up.svg");
-            priceImg.classList.add("priceImg");
+            priceValue = document.createElement("img");
+            priceValue.setAttribute("src", "https://i.ibb.co/RgBXBy5/1up.png");
+            priceValue.classList.add("cl1up");
             lives++;
             printLives();
-            enableBtnsMsgs();
         }
-        // else if(totalTimeLeft > 50 && totalTimeLeft < 100){
-        //     price.classList.add("price");
-        //     price.innerHTML = "20 Sec Up";
-        // };
+        else if(totalTimeLeft > 50 && totalTimeLeft < 100){
+            priceValue = document.createElement("img");
+            priceValue.setAttribute("src", "https://i.ibb.co/88m3SKG/20sec.png");
+            priceValue.classList.add("cl20sec");
+        }
+        else{
+            priceValue = document.createElement("img");
+            priceValue.setAttribute("src", "https://i.ibb.co/RQnxxv7/no-enough.png");
+            priceValue.classList.add("clnoEnough");
+        };
+        priceCont.append(priceValue);
+        enableBtnsMsgs();
     }
    
 }
