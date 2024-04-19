@@ -31,38 +31,38 @@ const mapsImgs = {
 };
 
 // --- banners ---
-let imgBanCaveman = "../assets/banners/the_caveman_banner.png";
-let imgBanTimeUP = "../assets/banners/time_up_banner.png";
-let imgBanGameOver = "../assets/banners/game_over_banner.png";
-let imgBanLevCompleted = "../assets/banners/stagel_completed_banner.png";
-let imgBanWinner = "../assets/banners/winner_banner.png";
+let imgBanCaveman = "./assets/banners/the_caveman_banner.png";
+let imgBanTimeUP = "./assets/banners/time_up_banner.png";
+let imgBanGameOver = "./assets/banners/game_over_banner.png";
+let imgBanLevCompleted = "./assets/banners/stagel_completed_banner.png";
+let imgBanWinner = "./assets/banners/winner_banner.png";
 // --- caveman status ---
-let imgStart = "../assets/status/confuse.png"
-let imgGameOver = "../assets/status/game_over.png";
-let imgTime = "../assets/status/crying.png";
-let imgWinner = "../assets/status/win.png";
+let imgStart = "./assets/status/confuse.png"
+let imgGameOver = "./assets/status/game_over.png";
+let imgTime = "./assets/status/crying.png";
+let imgWinner = "./assets/status/win.png";
 
 // --- Caveman ----
 // --- Walk ---
 let imgCavMan = new Image();
-imgCavMan.src = "../assets/caveman/walk_3.png";
+imgCavMan.src = "./assets/caveman/walk_3.png";
 
 // --- falling ---
 // --- fire ---
 let imgFallingFire = new Image();
-imgFallingFire.src = "../assets/caveman/falling_fire.png";
+imgFallingFire.src = "./assets/caveman/falling_fire.png";
 // --- water ---
 let imgFallingWater = new Image();
-imgFallingWater.src = "../assets/caveman/falling_water.png";
+imgFallingWater.src = "./assets/caveman/falling_water.png";
 // --- snow ---
 let imgFallingSnow = new Image();
-imgFallingSnow.src = "../assets/caveman/falling_snow.png";
+imgFallingSnow.src = "./assets/caveman/falling_snow.png";
 // --- sand ---
 let imgFallingSand = new Image();
-imgFallingSand.src = "../assets/caveman/falling_sand.png";
+imgFallingSand.src = "./assets/caveman/falling_sand.png";
 // --- jungle ---
 let imgFallingJungle = new Image();
-imgFallingJungle.src = "../assets/caveman/falling_jungle.png";
+imgFallingJungle.src = "./assets/caveman/falling_jungle.png";
 
 // --- Valores en ventana de mensajes ---
 const messagesValues = [];
