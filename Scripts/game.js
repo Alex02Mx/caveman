@@ -32,7 +32,6 @@ const playerPos = {
     y: undefined
 };
 let priceCont;
-let priceValue;
 const totalTimeParr = document.createElement("p");
 // --- variables ---
 let recordPos = false;
@@ -455,19 +454,13 @@ function beginningWindowFnc(){
     winMessage.innerHTML = "";
     const active = messagesValues.find(opc => opc["id"] == current);
 
-    const topImg = document.createElement("img");
-    topImg.setAttribute("src", active["topBanner"]);
-
     const bannerBeginningWindow = document.createElement("div");
     bannerBeginningWindow.classList.add("clTop");
-    bannerBeginningWindow.append(topImg);
-
-    const midImg = document.createElement("img");
-    midImg.setAttribute("src",  active["middleImg"]);
+    bannerBeginningWindow.append(active["topBanner"]);
 
     const imgBeginningWindow = document.createElement("div");
     imgBeginningWindow.classList.add("clMiddle");
-    imgBeginningWindow.append(midImg);
+    imgBeginningWindow.append(active["middleImg"]);
 
     const hisContainer = document.createElement("div");
     hisContainer.classList.add("hisContainer");
@@ -496,20 +489,14 @@ function statusWindowFnc(){
 
     winMessage.innerHTML = "";
     const active = messagesValues.find(opc => opc["id"] == current);
-
-    const topImg = document.createElement("img");
-    topImg.setAttribute("src", active["topBanner"]);
     
     const bannerStatusWindow = document.createElement("div");
     bannerStatusWindow.classList.add("clTop");
-    bannerStatusWindow.append(topImg);
-
-    const midImg = document.createElement("img");
-    midImg.setAttribute("src",  active["middleImg"]);
+    bannerStatusWindow.append(active["topBanner"]);
 
     const imgStatusWindow = document.createElement("div");
     imgStatusWindow.classList.add("clMiddle");
-    imgStatusWindow.append(midImg);
+    imgStatusWindow.append(active["middleImg"]);
 
     const msgStatusWindow = document.createElement("h1");
     msgStatusWindow.classList.add("clBottom");
@@ -524,20 +511,14 @@ function statusWindowFnc(){
 function levelPassWindow(){
     recordPos = false;
     disableBtns();
-
-    // priceImg.classList.remove("priceImg");
-    // priceImg.removeAttribute("src");
     totalTimeLeft = 0;
     winMessage.innerHTML = "";
 
     active = messagesValues.find(opc => opc["id"] == current);
 
-    const topImg = document.createElement("img");
-    topImg.setAttribute("src", active["topBanner"]);
-
     const messTitle = document.createElement("div");
     messTitle.classList.add("clTop");
-    messTitle.append(topImg);
+    messTitle.append(active["topBanner"]);
 
     const timeLeft = document.createElement("div");
 
@@ -574,10 +555,9 @@ function levelPassWindow(){
     totalTimeCont.classList.add("totalTimContainer");
     totalTimeCont.append(totalTimeParr);
 
+    priceCont = "";
     priceCont = document.createElement("div");
     priceCont.classList.add("priceCont");
-    // priceCont.append(priceValue);
-
 
     const btnStatusWindowCont = document.createElement("div");
     btnStatusWindowCont.classList.add("statusClass");
@@ -657,38 +637,24 @@ function printcount(){
         numIncr++;
         totalTimeParr.innerHTML = `Total Time Left = ${numIncr}`;
     }else{
-        // priceCont = "";
-        // priceValue = "";
         clearInterval(intervIncre);
-
         if(totalTimeLeft >= 100) {
             priceCont.appendChild(plusLive);
             plusLive.classList.add("cl1up");
-            // priceValue = document.createElement("img");
-            // priceValue.setAttribute("src", plusLive);
-            // priceValue.classList.add("cl1up");
             lives++;
             printLives();
         }
         else if(totalTimeLeft > 50 && totalTimeLeft < 100){
             priceCont.appendChild(plusSeconds);
             plusSeconds.classList.add("cl20sec");
-            // priceValue = document.createElement("img");
-            // priceValue.setAttribute("src", plusSeconds);
-            // priceValue.classList.add("cl20sec");
             extraTime = 10;
         }
         else{
             priceCont.appendChild(noEnough);
             noEnough.classList.add("clnoEnough");
-            // priceValue = document.createElement("img");
-            // priceValue.setAttribute("src", noEnough);
-            // priceValue.classList.add("clnoEnough");
         };
-        // priceCont.append(priceValue);
         enableBtnsMsgs();
     }
-   
 }
 function counting(){
     intervIncre = setInterval(printcount, 25);

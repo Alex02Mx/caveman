@@ -31,16 +31,26 @@ const mapsImgs = {
 };
 
 // --- banners ---
-let imgBanCaveman = "https://i.ibb.co/S3DhLbb/the-caveman-banner.png";
-let imgBanTimeUP = "https://i.ibb.co/KG0W0Zm/time-up-banner.png";
-let imgBanGameOver = "https://i.ibb.co/hs2Gy6d/game-over-banner.png";
-let imgBanLevCompleted = "https://i.ibb.co/6JSZk13/stagel-completed-banner.png";
-let imgBanWinner = "https://i.ibb.co/1MDRC1z/winner-banner.png";
+let imgBanCaveman = new Image();
+imgBanCaveman.src = "https://i.ibb.co/S3DhLbb/the-caveman-banner.png";
+let imgBanTimeUP = new Image();
+imgBanTimeUP.src = "https://i.ibb.co/KG0W0Zm/time-up-banner.png";
+let imgBanGameOver = new Image();
+imgBanGameOver.src = "https://i.ibb.co/hs2Gy6d/game-over-banner.png";
+let imgBanLevCompleted = new Image();
+imgBanLevCompleted.src = "https://i.ibb.co/6JSZk13/stagel-completed-banner.png";
+let imgBanWinner = new Image();
+imgBanWinner.src = "https://i.ibb.co/1MDRC1z/winner-banner.png";
+
 // --- caveman status ---
-let imgStart = "https://i.ibb.co/DMpj4jL/confuse.png"
-let imgGameOver = "https://i.ibb.co/F6JCQRh/game-over.png";
-let imgTime = "https://i.ibb.co/NpB93CX/crying.png";
-let imgWinner = "https://i.ibb.co/bWgJFRF/win.png";
+let imgStart = new Image();
+imgStart.src = "https://i.ibb.co/DMpj4jL/confuse.png";
+let imgGameOver = new Image();
+imgGameOver.src = "https://i.ibb.co/F6JCQRh/game-over.png";
+let imgTime = new Image();
+imgTime.src = "https://i.ibb.co/NpB93CX/crying.png";
+let imgWinner = new Image();
+imgWinner.src = "https://i.ibb.co/bWgJFRF/win.png";
 
 // --- Caveman ----
 // --- Walk ---
@@ -67,16 +77,13 @@ imgFallingJungle.src = "https://i.ibb.co/XyKK2Hn/falling-jungle.png";
 // --- valuies Imgs ---
 const plusLive = new Image();
 plusLive.src = "https://i.ibb.co/RgBXBy5/1up.png";
-
 const plusSeconds = new Image();
 plusSeconds.src = "https://i.ibb.co/XtR5FBj/10sec.png";
-
 const noEnough = new Image();
 noEnough.src = "https://i.ibb.co/RQnxxv7/no-enough.png";
 
 // --- icon live img ---
 const iconLive = "https://i.ibb.co/Tq0JTn4/happy-live.png";
-
 // --- Valores en ventana de mensajes ---
 const messagesValues = [];
 
