@@ -657,28 +657,35 @@ function printcount(){
         numIncr++;
         totalTimeParr.innerHTML = `Total Time Left = ${numIncr}`;
     }else{
-        priceValue = "";
+        // priceCont = "";
+        // priceValue = "";
         clearInterval(intervIncre);
 
         if(totalTimeLeft >= 100) {
-            priceValue = document.createElement("img");
-            priceValue.setAttribute("src", plusLive);
-            priceValue.classList.add("cl1up");
+            priceCont.appendChild(plusLive);
+            plusLive.classList.add("cl1up");
+            // priceValue = document.createElement("img");
+            // priceValue.setAttribute("src", plusLive);
+            // priceValue.classList.add("cl1up");
             lives++;
             printLives();
         }
         else if(totalTimeLeft > 50 && totalTimeLeft < 100){
-            priceValue = document.createElement("img");
-            priceValue.setAttribute("src", plusSeconds);
-            priceValue.classList.add("cl20sec");
+            priceCont.appendChild(plusSeconds);
+            plusSeconds.classList.add("cl20sec");
+            // priceValue = document.createElement("img");
+            // priceValue.setAttribute("src", plusSeconds);
+            // priceValue.classList.add("cl20sec");
             extraTime = 10;
         }
         else{
-            priceValue = document.createElement("img");
-            priceValue.setAttribute("src", noEnough);
-            priceValue.classList.add("clnoEnough");
+            priceCont.appendChild(noEnough);
+            noEnough.classList.add("clnoEnough");
+            // priceValue = document.createElement("img");
+            // priceValue.setAttribute("src", noEnough);
+            // priceValue.classList.add("clnoEnough");
         };
-        priceCont.append(priceValue);
+        // priceCont.append(priceValue);
         enableBtnsMsgs();
     }
    

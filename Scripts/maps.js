@@ -65,9 +65,14 @@ let imgFallingJungle = new Image();
 imgFallingJungle.src = "https://i.ibb.co/XyKK2Hn/falling-jungle.png";
 
 // --- valuies Imgs ---
-const plusLive = "https://i.ibb.co/RgBXBy5/1up.png";
-const plusSeconds = "https://i.ibb.co/88m3SKG/20sec.png";
-const noEnough = "https://i.ibb.co/RQnxxv7/no-enough.png";
+const plusLive = new Image();
+plusLive.src = "https://i.ibb.co/RgBXBy5/1up.png";
+
+const plusSeconds = new Image();
+plusSeconds.src = "https://i.ibb.co/XtR5FBj/10sec.png";
+
+const noEnough = new Image();
+noEnough.src = "https://i.ibb.co/RQnxxv7/no-enough.png";
 
 // --- icon live img ---
 const iconLive = "https://i.ibb.co/Tq0JTn4/happy-live.png";
@@ -90,7 +95,7 @@ const timeUp = {
     "id": "timeUp",
     "topBanner": imgBanTimeUP,
     "middleImg": imgTime,
-    "bottomText": "Time Up",
+    "bottomText": "Time ran out",
 };
 const gameO = {
     "id": "gameO",
