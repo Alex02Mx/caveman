@@ -64,8 +64,20 @@ imgFallingSand.src = "https://i.ibb.co/xjTKfy4/falling-sand.png";
 let imgFallingJungle = new Image();
 imgFallingJungle.src = "https://i.ibb.co/XyKK2Hn/falling-jungle.png";
 
+// --- valuies Imgs ---
+const plusLive = "https://i.ibb.co/RgBXBy5/1up.png";
+const plusSeconds = "https://i.ibb.co/88m3SKG/20sec.png";
+const noEnough = "https://i.ibb.co/RQnxxv7/no-enough.png";
+
+// --- icon live img ---
+const iconLive = "https://i.ibb.co/Tq0JTn4/happy-live.png";
+
 // --- Valores en ventana de mensajes ---
 const messagesValues = [];
+
+// --- btns imgs ---
+const inactiveBtnPad = "https://i.ibb.co/JkGBhcz/up-Dissabled.png";
+const activeBtnPad = "https://i.ibb.co/v4PVny5/up.png";
 
 const startG = {
     "id": "startG",

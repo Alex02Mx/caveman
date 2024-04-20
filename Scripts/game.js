@@ -65,6 +65,8 @@ let numIncr = 0;
 let intervIncre;
 let active;
 
+let extraTime = 0;
+
 let btnExitWindow = document.createElement("button");
 btnExitWindow.classList.add("btnMessStyle", "btnHov");
 btnExitWindow.innerHTML =  "Exit";
@@ -306,7 +308,7 @@ function disableBtns(){
     down.removeEventListener("click", btnDown);
     right.removeEventListener("click", btnRight);
     btn.forEach(btnR => btnR.removeAttribute("src"));
-    btn.forEach(btnR => btnR.setAttribute("src", "https://i.ibb.co/JkGBhcz/up-Dissabled.png"));
+    btn.forEach(btnR => btnR.setAttribute("src", inactiveBtnPad));
 };
 function enableBtns(){
     document.addEventListener("keyup" ,escuchador);
@@ -316,7 +318,7 @@ function enableBtns(){
     down.addEventListener("click", btnDown);
     right.addEventListener("click", btnRight);
     btn.forEach(btnR => btnR.removeAttribute("src"));
-    btn.forEach(btnR => btnR.setAttribute("src", "https://i.ibb.co/v4PVny5/up.png"));
+    btn.forEach(btnR => btnR.setAttribute("src", activeBtnPad));
 };
 function disableBtnsMsgs(){
     btnExitWindow.disabled = true;
@@ -336,7 +338,7 @@ function enableBtnsMsgs(){
 function printLives(){
     livesMsg.innerHTML = "";
     let arrayLives = [];
-    arrayLives = Array(lives).fill("https://i.ibb.co/Tq0JTn4/happy-live.png");
+    arrayLives = Array(lives).fill(iconLive);
 
     if(arrayLives.length > 3){
         let iconCavMen = new Image();
@@ -399,17 +401,7 @@ function movePlayer() {
 function fillObjLevels(){
     objSeconds[level] = timeMsg.innerHTML;
 };
-function couterColor(){
-    if(counter >= 20 && counter <= 40){
-        document.documentElement.style.setProperty("--colorChange", "#98f098");
-    }  
-    else if(counter >= 10 && counter < 20){
-        document.documentElement.style.setProperty("--colorChange", "#ffff00");
-    }
-    else if(counter > 0 && counter < 10){
-        document.documentElement.style.setProperty("--colorChange", "#f46262");
-    };
-};
+
 
 
 function save(){
@@ -619,7 +611,9 @@ function defaulValues(){
 
 
 function startTimer(){
-    document.documentElement.style.setProperty("--colorChange", "#98f098");
+    document.documentElement.style.setProperty("--colorChange", "#04d112");
+    counter+= extraTime;
+    extraTime = 0;
     timeMsg.innerHTML = counter;
     timeRep = setInterval(imprTimeTimer, 1000);
 };
@@ -636,6 +630,17 @@ function imprTimeTimer(){
     }else{
         couterColor();
         timeMsg.innerHTML = counter;
+    };
+};
+function couterColor(){
+    if(counter >= 20 && counter <= 40){
+        document.documentElement.style.setProperty("--colorChange", "#04d112");
+    }  
+    else if(counter >= 10 && counter < 20){
+        document.documentElement.style.setProperty("--colorChange", "#ffff00");
+    }
+    else if(counter > 0 && counter < 10){
+        document.documentElement.style.setProperty("--colorChange", "#ff0000");
     };
 };
 function restartTimer(){
@@ -657,19 +662,20 @@ function printcount(){
 
         if(totalTimeLeft >= 100) {
             priceValue = document.createElement("img");
-            priceValue.setAttribute("src", "https://i.ibb.co/RgBXBy5/1up.png");
+            priceValue.setAttribute("src", plusLive);
             priceValue.classList.add("cl1up");
             lives++;
             printLives();
         }
         else if(totalTimeLeft > 50 && totalTimeLeft < 100){
             priceValue = document.createElement("img");
-            priceValue.setAttribute("src", "https://i.ibb.co/88m3SKG/20sec.png");
+            priceValue.setAttribute("src", plusSeconds);
             priceValue.classList.add("cl20sec");
+            extraTime = 20;
         }
         else{
             priceValue = document.createElement("img");
-            priceValue.setAttribute("src", "https://i.ibb.co/RQnxxv7/no-enough.png");
+            priceValue.setAttribute("src", noEnough);
             priceValue.classList.add("clnoEnough");
         };
         priceCont.append(priceValue);

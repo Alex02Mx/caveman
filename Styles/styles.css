@@ -9,12 +9,12 @@
     --blue: rgb(12, 134, 215);
     --black: rgb(0, 0, 0);
     --orange: orange;
-    --darkOrange: rgb(251, 169, 10);
+    --darkOrange: rgb(255, 149, 0);
     --fire: rgb(0, 0, 0);
-    --colorChange: #98f098;
+    --colorChange: #04d112;
 }
 body{
-    color: #f46262;
+    color: #ffffff;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -54,15 +54,21 @@ body{
 .msgsTop p {
     font-size: 18px;
     font-weight: bold;
-    min-width: 140px;
     color: var(--darkOrange);
     margin: 0px;
+}
+.msgsTop > p {
+    min-width: 180px;
+}
+.msgsTop p:nth-child(2) {
+    min-width: 100px;
 }
 .lives {
     display: flex;
     align-items: center;
 }
 .livesSpan {
+    filter: drop-shadow(0 1px 1px black);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -72,10 +78,17 @@ span {
     color: var(--white);
 }
 .timeSpan {
+    filter: drop-shadow(0 1px 1px black);
     font-size: 20px;
     font-weight: bold;
     color: var(--colorChange);
 }
+.stageSpan,
+.levelSpan {
+    filter: drop-shadow(0 1px 1px black);
+
+}
+
 canvas{
     box-sizing: border-box;
     background-color: var(--brown);
@@ -90,13 +103,14 @@ canvas{
     border-radius: 8px;
     border: 1px solid var(--white);
     padding: 10px;
-    width: 322px;
+    width: 340px;
     height: 110px;
 }
 .inactive{
     background-color: var(--grey);
 }
 .btn {
+    filter: drop-shadow(0 1px 1px black);
     border: none;
     border-radius: 8px;
     border: 1px solid var(--darkBrown);
@@ -166,24 +180,27 @@ canvas{
 .clMiddle {
     width: auto;
     height: 80px;
+    filter: drop-shadow(0 1px 1px black);
 }
 .hisContainer {
-    text-align:justify;
+    text-align:left;
     overflow-y: hidden;
     overflow-y: scroll;
-    background-color: var(--white);
-    border: 1px solid var(--darkBrown);
+    scrollbar-width:none;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* border: 1px solid var(--darkBrown); */
     margin-top: 5px;
     padding: 10px;
-    width: 280px;
+    width: 250px;
     height: 75px;
 }
 .clhis {
-    color: var(--darkBrown);
+    color: var(--white);
     font-weight: bold;
 
 }
 .contLevelsResult {
+    filter: drop-shadow(0 1px 1px black);
     width: auto;
     height: 140px;
     display: flex;
@@ -195,24 +212,24 @@ canvas{
     font-weight: bold;
 }
 .spanLevelResult {
-    /* -webkit-text-stroke: 1px rgb(0, 0, 0); */
     font-size: 20px;
     font-weight: bold;
 }
 .greenStyle {
-    color: #5dee5d;
+    color: #04d112;
 }
 .yellowStyle {
     color: #ffff00;
 }
 .redStyle {
-    color: #f54242;
+    color: #ff0000;
 }
 .totalTimContainer {
     width: auto;
     height: 27px;
 }
 .totalTimeParr {
+    filter: drop-shadow(0 1px 1px black);
     color: var(--white);
     font-size: 20px;
     font-weight: bold;
@@ -222,9 +239,10 @@ canvas{
 }
 .clbeginning,
 .clBottom {
+    filter: drop-shadow(0 0 2px black);
     height: 36px;
-    -webkit-text-stroke: 1px rgb(0, 0, 0);
-    color: orange;
+    /* -webkit-text-stroke: 1px rgb(0, 0, 0); */
+    color: var(--darkOrange);
     font-size: 27px;
     font-weight: bold;
     animation: press 1s ease 1;
@@ -289,7 +307,7 @@ canvas{
     }
 }
 .clnoEnough {
-    width: auto;
+    width: 180px;
     height: 45px;
     animation: no_enough 1s ease-in 0s 1;
 }
