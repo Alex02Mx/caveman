@@ -671,7 +671,7 @@ function printcount(){
             priceValue = document.createElement("img");
             priceValue.setAttribute("src", plusSeconds);
             priceValue.classList.add("cl20sec");
-            extraTime = 20;
+            extraTime = 10;
         }
         else{
             priceValue = document.createElement("img");

@@ -18,7 +18,8 @@ body{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    background-color: var(--brown);
+    background-color: #000000;
+    /* background-color: var(--brown); */
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .game_container {
@@ -186,8 +187,7 @@ canvas{
     text-align:left;
     overflow-y: hidden;
     overflow-y: scroll;
-    scrollbar-width:none;
-    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(0, 0, 0, 0.2); */
     /* border: 1px solid var(--darkBrown); */
     margin-top: 5px;
     padding: 10px;
