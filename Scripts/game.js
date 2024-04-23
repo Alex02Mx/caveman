@@ -407,7 +407,6 @@ function movePlayer() {
         }
     }else{
         save();
-        // let posYdown = Number((elementSize * 0.8).toFixed(1));
         game.drawImage(mapsInfo[dirAreas]["caveManImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
         restore();
     }
