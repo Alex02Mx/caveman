@@ -291,7 +291,11 @@ canvas{
 .cl1up {
     width: 60px;
     height: auto;
+<<<<<<< HEAD
     animation: one_up 2s ease-in 1;
+=======
+    animation: one_up 2s ease-in 0s 1;
+>>>>>>> bf8767f0d9e7435173db2ea6d9c5e1e4c950f76a
 }
 @keyframes one_up {
     0% {
