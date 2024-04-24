@@ -43,6 +43,7 @@ let elementSize;
 
 let beginningWindow = true;
 let statusWindow = false;
+let levelPassWin = false;
 let current = "startG";
 
 let stCount = 0;
@@ -65,6 +66,7 @@ let intervIncre;
 let active;
 
 let extraTime = 0;
+let liveSet = false
 
 let btnExitWindow = document.createElement("button");
 btnExitWindow.classList.add("btnMessStyle", "btnHov");
@@ -73,7 +75,19 @@ btnExitWindow.addEventListener("click", fncStart);
 
 let btnStatusWindow = document.createElement("button");
 btnStatusWindow.classList.add("btnMessStyle", "btnHov");
-btnStatusWindow.addEventListener("click", startGame);
+btnStatusWindow.addEventListener("click", filter_LD);
+function filter_LD() {
+    defaulValues();
+    startGame(); 
+}
+
+let btnStatusWindowGO_TU = document.createElement("button");
+btnStatusWindowGO_TU.classList.add("btnMessStyle", "btnHov");
+btnStatusWindowGO_TU.addEventListener("click", filter_GO_TU);
+function filter_GO_TU() {
+    resetValuesStart();
+    startGame(); 
+}
 
 function escuchador(evento){
     switch(evento.keyCode){
@@ -293,6 +307,9 @@ function beginningFilter(){
     else if(statusWindow){
         statusWindowFnc();
     }
+    else if(levelPassWin){
+        levelPassWindow();
+    }
     else{
         startGame();
     }
@@ -377,7 +394,7 @@ function movePlayer() {
             winMessage.classList.remove("winOff");
             current = "gameO";
             statusWindowFnc();
-            resetValuesStart();
+            // resetValuesStart();
         }else{
             save();
             game.drawImage(mapsInfo[dirAreas]["collitionImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
@@ -426,7 +443,7 @@ function levelDone(){
     winMessage.classList.remove("winOff");
     disableBtns();
     levelCompleted();
-    defaulValues();
+    // defaulValues();
 };
 function levelCompleted(){
     stCount++;
@@ -441,6 +458,7 @@ function levelCompleted(){
     }else{
         mapNumber = 0;
         current = "levelPass";
+        levelPassWin = true;
         levelPassWindow();
         level = 1;
     }
@@ -485,6 +503,7 @@ function beginningWindowFnc(){
 };
 function statusWindowFnc(){
     recordPos = false;
+    statusWindow = true;
     disableBtns();
 
     winMessage.innerHTML = "";
@@ -504,8 +523,8 @@ function statusWindowFnc(){
 
     const btnStatusWindowCont = document.createElement("div");
     btnStatusWindowCont.classList.add("statusClass");
-    btnStatusWindow.innerHTML = "Play Again";
-    btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
+    btnStatusWindowGO_TU.innerHTML = "Play Again";
+    btnStatusWindowCont.append(btnExitWindow, btnStatusWindowGO_TU);
     winMessage.append(bannerStatusWindow, imgStatusWindow, msgStatusWindow, btnStatusWindowCont);
 };
 function levelPassWindow(){
@@ -581,6 +600,9 @@ function resetValuesStart(){
 };
 function defaulValues(){
     beginningWindow = true;
+    statusWindow = false;
+    levelPassWin = false;
+    liveSet = false;
     timeStart = undefined;
     objSeconds = {};
     numIncr = 0;
@@ -606,7 +628,7 @@ function imprTimeTimer(){
         winMessage.classList.remove("winOff");
         current = "timeUp";
         statusWindowFnc();
-        resetValuesStart();
+        // resetValuesStart();
     }else{
         couterColor();
         timeMsg.innerHTML = counter;
@@ -641,7 +663,9 @@ function printcount(){
         if(totalTimeLeft >= 100) {
             priceCont.appendChild(plusLive);
             plusLive.classList.add("cl1up");
-            lives++;
+            if(!liveSet){
+                lives++;
+                liveSet = true;            };
             printLives();
         }
         else if(totalTimeLeft > 50 && totalTimeLeft < 100){

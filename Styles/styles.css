@@ -210,10 +210,10 @@ canvas{
         top: 6px
     }
     88% {
-        top: -170px;
+        top: -160px;
     }
     98% {
-        top: -170px;
+        top: -160px;
     }
     100% {
         top: 0px;
@@ -291,7 +291,7 @@ canvas{
 .cl1up {
     width: 60px;
     height: auto;
-    animation: one_up 2s ease-in 0s 1;
+    animation: one_up 2s ease-in 1;
 }
 @keyframes one_up {
     0% {

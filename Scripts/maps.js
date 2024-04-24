@@ -56,6 +56,8 @@ imgWinner.src = "https://i.ibb.co/bWgJFRF/win.png";
 // --- Walk ---
 let imgCavMan = new Image();
 imgCavMan.src = "https://i.ibb.co/wrSDrcX/walk-1.png";
+let imgPet = new Image();
+imgPet.src = "/assets/pet.png";
 
 // --- falling ---
 // --- fire ---
