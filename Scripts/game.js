@@ -407,10 +407,6 @@ function movePlayer() {
         }
     }else{
         save();
-<<<<<<< HEAD
-        // let posYdown = Number((elementSize * 0.8).toFixed(1));
-=======
->>>>>>> bf8767f0d9e7435173db2ea6d9c5e1e4c950f76a
         game.drawImage(mapsInfo[dirAreas]["caveManImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
         restore();
     }
@@ -457,7 +453,14 @@ function levelCompleted(){
         level = 0;
         stCount = 0;
         lives = 3;
-        printRecord()
+        printRecord();
+    }
+    else if(dirAreas == "Laberinto") {
+        mapNumber = 0;
+        current = "levelPass";
+        levelPassWin = true;
+        levelPassWindow();
+        level = 1;
     }else{
         mapNumber = 0;
         current = "levelPass";

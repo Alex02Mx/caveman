@@ -28,6 +28,8 @@ const mapsImgs = {
     "Jungle3": "https://i.ibb.co/m0fPwL3/Jungle-level-3.jpg",
     "Jungle4": "https://i.ibb.co/Jvvb5ZZ/Jungle-level-4.jpg",
     "Jungle5": "https://i.ibb.co/X5YmX6Q/Jungle-level-5.jpg",
+
+    "Laberinto": "/assets/laberinto_01.jpg"
 };
 
 // --- banners ---
@@ -56,11 +58,9 @@ imgWinner.src = "https://i.ibb.co/bWgJFRF/win.png";
 // --- Walk ---
 let imgCavMan = new Image();
 imgCavMan.src = "https://i.ibb.co/wrSDrcX/walk-1.png";
-<<<<<<< HEAD
+// --- Pet ---
 let imgPet = new Image();
 imgPet.src = "/assets/pet.png";
-=======
->>>>>>> bf8767f0d9e7435173db2ea6d9c5e1e4c950f76a
 
 // --- falling ---
 // --- fire ---
@@ -132,7 +132,8 @@ const stages = {
     2 : "stageSnow",
     3 : "stageSand",
     4 : "stageJungle",
-    5 : "EndGame"
+    5 : "Laberinto",
+    6 : "EndGame"
 };
 const stagesNames = {
     0 : "Magma",
