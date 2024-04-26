@@ -29,7 +29,7 @@ const mapsImgs = {
     "Jungle4": "https://i.ibb.co/Jvvb5ZZ/Jungle-level-4.jpg",
     "Jungle5": "https://i.ibb.co/X5YmX6Q/Jungle-level-5.jpg",
 
-    "Laberinto": "/assets/laberinto_01.jpg"
+    "Laberinto1": "/assets/laberinto_01.jpg"
 };
 
 // --- banners ---
@@ -132,7 +132,7 @@ const stages = {
     2 : "stageSnow",
     3 : "stageSand",
     4 : "stageJungle",
-    5 : "Laberinto",
+    5 : "stageLaberinto",
     6 : "EndGame"
 };
 const stagesNames = {
@@ -141,7 +141,8 @@ const stagesNames = {
     2 : "Snow",
     3 : "Sand",
     4 : "Jungle",
-    5 : "Game"
+    5 : "Laberinto",
+    6 : "Game"
 };
 
 let dirAreas = undefined;
@@ -161,12 +162,17 @@ function loadMaps(obj){
             break;
         }
         else{
-            for(let i = 1; i < 6; i++){
+            if( name == "Laberinto") {
                 let map = new Image();
-                let srcInfo = mapsImgs[name + i];
-                map.src = srcInfo;
-                // map.src = "../assets/stages_maps/" + name + "_level_" + i + ".png";
+                map.src = mapsImgs["Laberinto1"];
                 arrayMap.push(map);
+            }else {
+                for(let i = 1; i < 2; i++){
+                    let map = new Image();
+                    let srcInfo = mapsImgs[name + i];
+                    map.src = srcInfo;
+                    arrayMap.push(map);
+                }
             }
             let obj = {};
             obj[name] = arrayMap;
@@ -181,6 +187,18 @@ loadMaps(stagesNames);
 mapsInfo = {
     "stageMagma":{
         "areas" : [`
+            PPPPPPPPPP
+            PFPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PSPPPPPPPP
+            PPPPPPPPPP
+        `,
+        `
             CCCPPPCPPP
             CFCPCPCPCP
             CPPPCPPPCP
@@ -246,6 +264,18 @@ mapsInfo = {
     "stageWater":{
         "areas" : [`
             PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPSPPPPP
+            PPPPPPPPPP
+            PPPPPPPFPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+        `,
+        `
+            PPPPPPPPPP
             PCCCCCCCCP
             PCPPPPPPCP
             PCPCCCCPPP
@@ -309,6 +339,18 @@ mapsInfo = {
     },
     "stageSnow":{
         "areas" : [`
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPFP
+            PPPPPPPPPP
+            PPPPPPPPSP
+            PPPPPPPPPP
+        `,
+        `
             PPPCCPPPPP
             PCPCCPCCCP
             PCPPPPCCPP
@@ -373,6 +415,18 @@ mapsInfo = {
     },
     "stageSand":{
         "areas" : [`
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PSPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PFPPPPPPPP
+            PPPPPPPPPP
+        `,
+        `
             PPPPPPPPPC
             PCCCCCCPPP
             PCPPPCCCCP
@@ -437,6 +491,18 @@ mapsInfo = {
     },
     "stageJungle":{
         "areas" : [`
+            PPPPPPPPPP
+            PSPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PFPPPPPPPP
+            PPPPPPPPPP
+        `,
+        `
             CPPPCPPPPP
             PSCPPPCCCP
             CCCCCCCCCP
@@ -496,6 +562,22 @@ mapsInfo = {
             PCCCCCCCCP
             PPPPPPPPPP
             `],
+        "caveManImg" : imgCavMan,
+        "collitionImg" : imgFallingJungle
+    },
+    "stageLaberinto":{
+        "areas" : [`
+        PPPPPPPPPP
+        PPPPPPPPPP
+        PPPPPPPPPP
+        PPPPPPPPPP
+        PPPPPPPPPP
+        PPPPPPPPPP
+        PPPPPPPPPP
+        PPPPPPPPPP
+        PPPPPPPPPS
+        PPFPPPPPPP
+         `],
         "caveManImg" : imgCavMan,
         "collitionImg" : imgFallingJungle
     }

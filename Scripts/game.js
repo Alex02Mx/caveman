@@ -40,6 +40,7 @@ let canvasSize;
 let actualPosX;
 let actualPosY;
 let elementSize;
+let wallWidth;
 
 let beginningWindow = true;
 let statusWindow = false;
@@ -49,11 +50,11 @@ let current = "startG";
 let stCount = 0;
 let level = 0;
 let timeStart = undefined;
-let amountTime = 40;
+let amountTime = 2000;
 let counter = amountTime;
 let timeRep = undefined;
 let maxLength;
-let lives = 3;
+let lives = 99;
 let iconSize = 30;
 let arrayObst;
 
@@ -84,6 +85,7 @@ function filter_LD() {
 let btnStatusWindowGO_TU = document.createElement("button");
 btnStatusWindowGO_TU.classList.add("btnMessStyle", "btnHov");
 btnStatusWindowGO_TU.addEventListener("click", filter_GO_TU);
+
 function filter_GO_TU() {
     resetValuesStart();
     startGame(); 
@@ -118,54 +120,165 @@ function fncStart(){
     beginningFilter();
 };
 
+
+function btnUpYnewValue(){
+    let newYposUp = Number( playerPos["y"].toFixed(1) ) - Number( elementSize.toFixed(1) );
+    playerPos["y"] = Number(newYposUp.toFixed(1));
+    console.log(playerPos["y"]);
+    levelCheck();
+    startGame();
+}
+function btnDownYnewValue(){
+    let newYposDown = Number( playerPos["y"].toFixed(1) ) +  Number( elementSize.toFixed(1) );
+    playerPos["y"] = Number (newYposDown.toFixed(1));
+    console.log(playerPos["y"]);
+    levelCheck();
+    startGame();
+}
+function btnLeftXnewValue(){
+    let newXposLeft = Number( playerPos["x"].toFixed(1)) - Number( elementSize.toFixed(1));
+    playerPos["x"] =  Number(newXposLeft.toFixed(1));
+    console.log(playerPos["x"]);
+    flip = 1;
+}
+function btnRightXnewValue(){
+    let newXposRight = Number( playerPos["x"].toFixed(1)) + Number( elementSize.toFixed(1));
+    playerPos["x"] = Number(newXposRight.toFixed(1));
+    console.log(playerPos["x"]);
+    flip = 0;
+}
+
+
 function btnUp(){
     if( !( playerPos["y"] < elementSize) ){
-        let playerUAddPosA = Number( playerPos["y"].toFixed(1));
-        let playerUAddPosB = Number( elementSize.toFixed(1));
-        let playerUAddPosC = Number( (playerUAddPosA - playerUAddPosB).toFixed(1) );
-        playerPos["y"] = playerUAddPosC;
-        levelCheck();
-        startGame();
+        if(stageName == "Laberinto"){ 
+            let xp = playerPos["x"];
+            let yp = playerPos["y"];
+            if( !(yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize)-1 && xp < (elementSize)+1 ||
+                yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize * 5)-1 && xp < (elementSize * 8)+1 ||
+                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp > 0 -1 && xp < 0 + 1 ||
+                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
+                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
+                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp > elementSize -1 && xp < elementSize + 1 ||
+                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp >(elementSize * 3)-1 && xp < (elementSize * 4)+1 ||
+                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp >(elementSize * 9)-1 && xp < (elementSize * 9)+1 ||
+                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp > 0-1 && xp < 0 + 1 ||
+                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp >(elementSize * 2)-1 && xp < (elementSize * 3)+1 ||
+                yp > (elementSize * 5) - 1 && yp < (elementSize * 5) + 1 && xp > (elementSize) - 1 && xp < (elementSize * 2) +1 ||
+                yp > (elementSize * 5) - 1 && yp < (elementSize * 5) + 1 && xp > (elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
+                yp > (elementSize * 6) - 1 && yp < (elementSize * 6) + 1 && xp > (elementSize * 5)-1 && xp < (elementSize * 6)+1 ||
+                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 4)+1 ||
+                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
+                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 5)+1 ||
+                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize * 8)-1 && xp < (elementSize * 9)+1 ||
+                yp > (elementSize * 9) - 1 && yp < (elementSize * 9) + 1 && xp > (elementSize)-1 && xp < (elementSize * 7)+1 ||
+                yp > (elementSize * 9) - 1 && yp < (elementSize * 9) + 1 && xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1) ) {
+                    btnUpYnewValue();
+            }
+        }else{
+            btnUpYnewValue();
+        }
     }
 };
 function btnDown(){
     if(!( (playerPos["y"] + elementSize) >= canvasSize ) ){
-        let playerDAddPosA = Number( playerPos["y"].toFixed(1));
-        let playerDAddPosB = Number( elementSize.toFixed(1));
-        let playerDAddPosC = Number( (playerDAddPosA + playerDAddPosB).toFixed(1) );
-        playerPos["y"] = playerDAddPosC;
+        if(stageName == "Laberinto"){
+            let xp = playerPos["x"];
+            let yp = playerPos["y"];
+            if( !(yp > 0 - 1 && yp < 0 + 1 && xp >(elementSize)-1 && xp < (elementSize)+1 ||
+                yp > 0 - 1 && yp < 0 + 1 && xp >(elementSize * 5)-1 && xp < (elementSize * 8)+1 ||
+                yp > elementSize - 1 && yp < elementSize + 1 && xp > 0 -1 && xp < 0 + 1 ||
+                yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
+                yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
+                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp > elementSize -1 && xp < elementSize + 1 ||
+                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 3)-1 && xp < (elementSize * 4)+1 ||
+                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 9)-1 && xp < (elementSize * 9)+1 ||
+                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp > 0-1 && xp < 0 + 1 ||
+                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp >(elementSize * 2)-1 && xp < (elementSize * 3)+1 ||
+                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp > (elementSize) - 1 && xp < (elementSize * 2) + 1 ||
+                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp > (elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
+                yp > (elementSize * 5) - 1 && yp < (elementSize * 5) + 1 && xp > (elementSize * 5)-1 && xp < (elementSize * 6)+1 ||
+                yp > (elementSize * 6) - 1 && yp < (elementSize * 6) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 4)+1 ||
+                yp > (elementSize * 6) - 1 && yp < (elementSize * 6) + 1 && xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
+                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 5)+1 ||
+                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 8)-1 && xp < (elementSize * 9)+1 ||
+                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize)-1 && xp < (elementSize * 7)+1 ||
+                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1) ) {
+                    btnDownYnewValue();
+            }
+        }else{
+            btnDownYnewValue();
+        }
+    }
+
+        // else if(!( (playerPos["y"] + elementSize) >= canvasSize ) ){
+        //     let playerDAddPosA = Number( playerPos["y"].toFixed(1));
+        //     let playerDAddPosB = Number( elementSize.toFixed(1));
+        //     let playerDAddPosC = Number( (playerDAddPosA + playerDAddPosB).toFixed(1) );
+        //     playerPos["y"] = playerDAddPosC;
+        //     levelCheck();
+        //     startGame();
+        // }
+ 
+};
+function btnLeft(){
+    if( !( playerPos["x"] < elementSize) ){
+        if(stageName == "Laberinto"){
+            let xp = playerPos["x"];
+            let yp = playerPos["y"];
+            if( !(xp > elementSize -1 && xp < (elementSize)+1 && yp >(elementSize * 5)-1 && yp < (elementSize * 8)+1 ||
+                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp >(elementSize)-1 && yp < (elementSize * 3)+1 ||
+                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
+                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize)-1 && yp < (elementSize * 2)+1 ||
+                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize * 4)-1 && yp < (elementSize * 5)+1 ||
+                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize * 9)-1 && yp < (elementSize * 9)+1  ||
+                xp > (elementSize * 4)-1 && xp < (elementSize * 4)+1 && yp > (0)-1 && yp < (elementSize)+1 ||
+                xp > (elementSize * 4)-1 && xp < (elementSize * 4)+1 && yp > (elementSize * 5)-1 && yp < (elementSize * 6)+1 ||
+                xp > (elementSize * 5)-1 && xp < (elementSize * 5)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 4)+1 ||
+                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 4)+1 ||
+                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
+                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
+                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 5)+1  ||
+                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize * 7)-1 && yp < (elementSize * 8)+1  ||
+                xp > (elementSize * 8)-1 && xp < (elementSize * 8)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 6)+1 ||
+                xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
+                xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 6)+1) ){
+                    btnLeftXnewValue();
+            }
+        }else{
+            btnLeftXnewValue();
+        }
         levelCheck();
         startGame();
     }
-};
-function btnLeft(){
-    // if(flip == 0){
-    //     flip = 1;
-    // }
-    // else{
-    // }
-    if(!( playerPos["x"] < elementSize)){
-        let playerLAddPosA = Number( playerPos["x"].toFixed(1));
-        let playerLAddPosB = Number( elementSize.toFixed(1));
-        let playerLAddPosC = Number( (playerLAddPosA - playerLAddPosB).toFixed(1) );
-        playerPos["x"] = playerLAddPosC;
-        flip = 1;
-    }
-    levelCheck();
-    startGame();
-};
+}
 function btnRight(){
-    // if(flip == 1){
-    //     flip = 0;
-    // }
-    // else{
-    // }
     if( !( (playerPos["x"] + elementSize) >= canvasSize ) ){
-        let playerRAddPosA = Number( playerPos["x"].toFixed(1));
-        let playerRAddPosB = Number( elementSize.toFixed(1));
-        let playerRAddPosC = Number( (playerRAddPosA + playerRAddPosB).toFixed(1) );
-        playerPos["x"] = playerRAddPosC;
-        flip = 0;
+        if(stageName == "Laberinto"){
+            let xp = playerPos["x"];
+            let yp = playerPos["y"];
+            if( !(xp > 0 - 1 && xp < 0 + 1 && yp >(elementSize * 5)-1 && yp < (elementSize * 8)+1 ||
+                xp > (elementSize * 1)-1 && xp < (elementSize * 1)+1 && yp >(elementSize)-1 && yp < (elementSize * 3)+1 ||
+                xp > (elementSize * 1)-1 && xp < (elementSize * 1)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
+                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize)-1 && yp < (elementSize * 2)+1 ||
+                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize * 4)-1 && yp < (elementSize * 5)+1 ||
+                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize * 9)-1 && yp < (elementSize * 9)+1  ||
+                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (0)-1 && yp < (elementSize)+1  ||
+                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize * 5)-1 && yp < (elementSize * 6)+1 ||
+                xp > (elementSize * 4)-1 && xp < (elementSize * 4)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 4)+1 ||
+                xp > (elementSize * 5)-1 && xp < (elementSize * 5)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 4)+1 ||
+                xp > (elementSize * 5)-1 && xp < (elementSize * 5)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
+                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
+                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 5)+1  ||
+                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 7)-1 && yp < (elementSize * 8)+1  ||
+                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 6)+1 ||
+                xp > (elementSize * 8)-1 && xp < (elementSize * 8)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
+                xp > (elementSize * 8)-1 && xp < (elementSize * 8)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 6)+1 ) ) {
+                    btnRightXnewValue();
+            }
+        }else{
+            btnRightXnewValue();
+        }
     }
     levelCheck();
     startGame();
@@ -203,6 +316,7 @@ function setCanvasSize(){
     winMessage.setAttribute("width", canvasSize);
     winMessage.setAttribute("height", canvasSize);
     elementSize = Number( (canvasSize / 10).toFixed(1) );
+    wallWidth = Number( (canvasSize / 100).toFixed(1) );
     page.classList.remove("winOff");
     beginningFilter();
 };
@@ -394,7 +508,6 @@ function movePlayer() {
             winMessage.classList.remove("winOff");
             current = "gameO";
             statusWindowFnc();
-            // resetValuesStart();
         }else{
             save();
             game.drawImage(mapsInfo[dirAreas]["collitionImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
