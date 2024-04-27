@@ -40,21 +40,21 @@ let canvasSize;
 let actualPosX;
 let actualPosY;
 let elementSize;
-let wallWidth;
 
 let beginningWindow = true;
 let statusWindow = false;
 let levelPassWin = false;
+let levelsPassedWin = false;
 let current = "startG";
 
 let stCount = 0;
-let level = 0;
+let level = 1;
 let timeStart = undefined;
-let amountTime = 2000;
+let amountTime = 40;
 let counter = amountTime;
 let timeRep = undefined;
 let maxLength;
-let lives = 99;
+let lives = 3;
 let iconSize = 30;
 let arrayObst;
 
@@ -77,15 +77,24 @@ btnExitWindow.addEventListener("click", fncStart);
 let btnStatusWindow = document.createElement("button");
 btnStatusWindow.classList.add("btnMessStyle", "btnHov");
 btnStatusWindow.addEventListener("click", filter_LD);
-function filter_LD() {
-    defaulValues();
-    startGame(); 
-}
 
 let btnStatusWindowGO_TU = document.createElement("button");
 btnStatusWindowGO_TU.classList.add("btnMessStyle", "btnHov");
 btnStatusWindowGO_TU.addEventListener("click", filter_GO_TU);
 
+function fncStart(){
+    livesMsg.innerHTML = "";
+    timeMsg.innerHTML = "";
+    stageMsg.innerHTML = "";
+    levelMsg.innerHTML = "";
+    current = "startG";
+    resetValuesStart();
+    beginningFilter();
+};
+function filter_LD() {
+    defaulValues();
+    startGame(); 
+}
 function filter_GO_TU() {
     resetValuesStart();
     startGame(); 
@@ -110,45 +119,51 @@ function escuchador(evento){
     };
 };
 
-function fncStart(){
-    livesMsg.innerHTML = "";
-    timeMsg.innerHTML = "";
-    stageMsg.innerHTML = "";
-    levelMsg.innerHTML = "";
-    current = "startG";
-    resetValuesStart();
-    beginningFilter();
+function defaulValues(){
+    beginningWindow = true;
+    statusWindow = false;
+    levelPassWin = false;
+    liveSet = false;
+    timeStart = undefined;
+    objSeconds = {};
+    numIncr = 0;
+    // priceImg.removeAttribute("src");
+    playerPos["x"] = undefined;
+    playerPos["y"] = undefined;
+}
+function resetValuesStart(){
+    disableBtns();
+    dirAreas = undefined;
+    mapNumber = 0;
+    level = 1;
+    stCount = 0;
+    lives = 3;
+    defaulValues();
 };
 
 
 function btnUpYnewValue(){
     let newYposUp = Number( playerPos["y"].toFixed(1) ) - Number( elementSize.toFixed(1) );
     playerPos["y"] = Number(newYposUp.toFixed(1));
-    console.log(playerPos["y"]);
     levelCheck();
     startGame();
 }
 function btnDownYnewValue(){
     let newYposDown = Number( playerPos["y"].toFixed(1) ) +  Number( elementSize.toFixed(1) );
     playerPos["y"] = Number (newYposDown.toFixed(1));
-    console.log(playerPos["y"]);
     levelCheck();
     startGame();
 }
 function btnLeftXnewValue(){
     let newXposLeft = Number( playerPos["x"].toFixed(1)) - Number( elementSize.toFixed(1));
     playerPos["x"] =  Number(newXposLeft.toFixed(1));
-    console.log(playerPos["x"]);
     flip = 1;
 }
 function btnRightXnewValue(){
     let newXposRight = Number( playerPos["x"].toFixed(1)) + Number( elementSize.toFixed(1));
     playerPos["x"] = Number(newXposRight.toFixed(1));
-    console.log(playerPos["x"]);
     flip = 0;
 }
-
-
 function btnUp(){
     if( !( playerPos["y"] < elementSize) ){
         if(stageName == "Laberinto"){ 
@@ -284,6 +299,24 @@ function btnRight(){
     startGame();
 };
 
+function levelCheck(){
+    const caveX = firePos["xC"] == playerPos["x"];
+    const caveY = firePos["yC"] == playerPos["y"];
+    const caveC = caveX && caveY;
+    if(caveC){
+        fillObjLevels();
+        level++;
+        mapNumber++;
+        restartTimer();
+        if( !(mapNumber > maxLength) ){
+            startTimer();
+        }
+    };
+};
+function fillObjLevels(){
+    objSeconds[level] = timeMsg.innerHTML;
+};
+
 
 function setCanvasSize(){
     if(recordPos == true){
@@ -316,15 +349,27 @@ function setCanvasSize(){
     winMessage.setAttribute("width", canvasSize);
     winMessage.setAttribute("height", canvasSize);
     elementSize = Number( (canvasSize / 10).toFixed(1) );
-    wallWidth = Number( (canvasSize / 100).toFixed(1) );
     page.classList.remove("winOff");
     beginningFilter();
 };
+function beginningFilter(){
+    if(beginningWindow){
+        beginningWindowFnc();
+    }
+    else if(statusWindow){
+        statusWindowFnc();
+    }
+    else if(levelPassWin){
+        levelPassWindow();
+    }
+    else if(levelsPassedWin){
+        levelsPassedWindow();
+    }
+    else{
+        startGame();
+    }
+};
 function startGame() {
-    if(dirAreas == undefined){
-        dirAreas = stages[stCount];
-        level++;
-    };
     stageName = stagesNames[stCount];
     let lenghtMapArray = arrayImgMaps[stCount][stageName];
     maxLength = lenghtMapArray.length - 1;
@@ -332,18 +377,15 @@ function startGame() {
         levelDone();
         return;
     };
+    dirAreas = stages[stCount];
     bgnMap = lenghtMapArray[mapNumber];
     collitionAreas = mapsInfo[dirAreas]["areas"][mapNumber];
     beginningWindow = false;
     recordPos = true;
-    btns.classList.remove("winOff");
     winMessage.classList.add("winOff");
     canvas.classList.remove("winOff");
-
+    btns.classList.remove("winOff");
     enableBtns();
-
-    // game.font = (elementSize*.8).toFixed(0) + "px Verdana";
-    // game.textAlign = "left";
 
     const mapTrim = collitionAreas.trim().split("\n");
     const mapRowCol = mapTrim.map((row) => row.trim().split(""));
@@ -351,13 +393,10 @@ function startGame() {
     if(!timeStart){
         timeStart = true;
         startTimer();
-    //     timeStart = Date.now();
-    //    timeInterval = setInterval(printTime,100);
     };
    
     printLives();
     printLevel();
-    // printTime();
 
     game.clearRect(0, 0, canvasSize, canvasSize);
     arrayObst = [];
@@ -368,7 +407,7 @@ function startGame() {
             let posXM = Number((elementSize * col).toFixed(1));
             let posX = posXM;
             // --- posicion Y ---
-            let posyM = Number( (elementSize * row).toFixed(1) );
+            let posyM = Number((elementSize * row).toFixed(1));
             let posY = posyM;
             // --- Item letra directorio mapa---
             let item = mapRowCol[row][col];
@@ -394,38 +433,37 @@ function startGame() {
             }
         }
     }
-    // game.fillText(emojis[item],posX, posY);
     game.drawImage(bgnMap, 0, 0, canvasSize, canvasSize);
     movePlayer();
 };
-
-
-function levelCheck(){
-    const caveX = firePos["xC"] == playerPos["x"];
-    const caveY = firePos["yC"] == playerPos["y"];
-    const caveC = caveX && caveY;
-    if(caveC){
-        fillObjLevels();
-        level++;
-        mapNumber++;
-        restartTimer();
-        if( !(mapNumber > maxLength) ){
-            startTimer();
+function movePlayer() {
+    const colisionRoca = arrayObst.find((pos)=> {
+        const colisionX = pos["x"] == playerPos["x"];
+        const colisionY = pos["y"] == playerPos["y"];
+        return colisionX && colisionY;
+    })
+    if(colisionRoca){
+        lives--;
+        printLives();
+        if(lives == 0){
+            restartTimer();
+            canvas.classList.add("winOff");
+            winMessage.classList.remove("winOff");
+            current = "gameO";
+            statusWindowFnc();
+        }else{
+            save();
+            game.drawImage(mapsInfo[dirAreas]["collitionImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
+            restore();
+            playerPos["x"] = undefined;
+            playerPos["y"] = undefined;
+            disableBtns();
+            setTimeout(() =>{startGame();}, 800);
         }
-    };
-};
-function beginningFilter(){
-    if(beginningWindow){
-        beginningWindowFnc();
-    }
-    else if(statusWindow){
-        statusWindowFnc();
-    }
-    else if(levelPassWin){
-        levelPassWindow();
-    }
-    else{
-        startGame();
+    }else{
+        save();
+        game.drawImage(mapsInfo[dirAreas]["caveManImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
+        restore();
     }
 };
 
@@ -493,45 +531,6 @@ function printLevel(){
 };
 
 
-function movePlayer() {
-    const colisionRoca = arrayObst.find((pos)=> {
-        const colisionX = pos["x"] == playerPos["x"];
-        const colisionY = pos["y"] == playerPos["y"];
-        return colisionX && colisionY;
-    })
-    if(colisionRoca){
-        lives--;
-        printLives();
-        if(lives == 0){
-            restartTimer();
-            canvas.classList.add("winOff");
-            winMessage.classList.remove("winOff");
-            current = "gameO";
-            statusWindowFnc();
-        }else{
-            save();
-            game.drawImage(mapsInfo[dirAreas]["collitionImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
-            restore();
-            // game.fillText(emojis["COLLITION"],playerPos["x"],playerPos["y"]);
-            playerPos["x"] = undefined;
-            playerPos["y"] = undefined;
-            disableBtns();
-            setTimeout(() =>{startGame();}, 800);
-        }
-    }else{
-        save();
-        game.drawImage(mapsInfo[dirAreas]["caveManImg"], playerPos["x"], playerPos["y"], elementSize,elementSize);
-        restore();
-    }
-};
-
-
-function fillObjLevels(){
-    objSeconds[level] = timeMsg.innerHTML;
-};
-
-
-
 function save(){
     if(flip == 1){
         game.save();
@@ -548,40 +547,36 @@ function restore(){
 
 
 function levelDone(){
-    // clearTimer();
-    // stageMsg.innerHTML = "Cleared";
-    // levelMsg.innerHTML = "Cleared";
     canvas.classList.add("winOff");
     winMessage.classList.remove("winOff");
     disableBtns();
-    levelCompleted();
-    // defaulValues();
-};
-function levelCompleted(){
-    stCount++;
-    dirAreas = stages[stCount];
-    if(dirAreas == "EndGame"){
+
+    if(dirAreas == "stageMagma" || dirAreas == "stageWater" || dirAreas == "stageSnow" || dirAreas == "stageSand" || dirAreas == "stageJungle"){
+        mapNumber = 0;
+        level = 1;
+        stCount++;
+        current = "levelPass";
+        levelPassWin = true;
+        levelPassWindow();
+    }
+    else if(dirAreas == "stageLaberinto") {
+        mapNumber = 0;
+        level = 1;
+        stCount++;
+        current = "levelsPassed";
+        levelsPassedWin = true;
+        levelsPassedWindow();
+     }
+     else if(dirAreas == "EndGame"){
         dirAreas = undefined;
         mapNumber = 0;
-        level = 0;
+        level = 1;
         stCount = 0;
         lives = 3;
-        printRecord();
-    }
-    else if(dirAreas == "Laberinto") {
-        mapNumber = 0;
-        current = "levelPass";
-        levelPassWin = true;
-        levelPassWindow();
-        level = 1;
-    }else{
-        mapNumber = 0;
-        current = "levelPass";
-        levelPassWin = true;
-        levelPassWindow();
-        level = 1;
+        // printRecord();
     }
 };
+
 
 
 function beginningWindowFnc(){
@@ -699,36 +694,37 @@ function levelPassWindow(){
 
     const btnStatusWindowCont = document.createElement("div");
     btnStatusWindowCont.classList.add("statusClass");
-    btnStatusWindow.innerHTML = "Next Level";
+    btnStatusWindow.innerHTML = active["btnText"];
     btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
+
     winMessage.append(messTitle, timeLeft, totalTimeCont, priceCont, btnStatusWindowCont);
     
     disableBtnsMsgs();
     counting();
 };
+function levelsPassedWindow(){
+    winMessage.innerHTML = "";
+    const active = messagesValues.find(opc => opc["id"] == current);
+    
+    const bannerStatusWindow = document.createElement("div");
+    bannerStatusWindow.classList.add("clTop");
+    bannerStatusWindow.append(active["topBanner"]);
 
+    const imgStatusWindow = document.createElement("div");
+    imgStatusWindow.classList.add("clMiddle");
+    imgStatusWindow.append(active["middleImg"]);
 
-function resetValuesStart(){
-    disableBtns();
-    dirAreas = undefined;
-    mapNumber = 0;
-    level = 0;
-    stCount = 0;
-    lives = 3;
-    defaulValues();
+    const msgStatusWindow = document.createElement("h1");
+    msgStatusWindow.classList.add("clBottom");
+    msgStatusWindow.innerHTML = active["bottomText"];
+
+    const btnStatusWindowCont = document.createElement("div");
+    btnStatusWindowCont.classList.add("statusClass");
+    btnStatusWindowGO_TU.innerHTML = "Play Again";
+    btnStatusWindowCont.append(btnStatusWindowGO_TU);
+    winMessage.append(bannerStatusWindow, imgStatusWindow, msgStatusWindow, btnStatusWindowCont);
 };
-function defaulValues(){
-    beginningWindow = true;
-    statusWindow = false;
-    levelPassWin = false;
-    liveSet = false;
-    timeStart = undefined;
-    objSeconds = {};
-    numIncr = 0;
-    // priceImg.removeAttribute("src");
-    playerPos["x"] = undefined;
-    playerPos["y"] = undefined;
-}
+
 
 
 function startTimer(){

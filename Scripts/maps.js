@@ -89,12 +89,14 @@ noEnough.src = "https://i.ibb.co/RQnxxv7/no-enough.png";
 
 // --- icon live img ---
 const iconLive = "https://i.ibb.co/Tq0JTn4/happy-live.png";
-// --- Valores en ventana de mensajes ---
-const messagesValues = [];
 
 // --- btns imgs ---
 const inactiveBtnPad = "https://i.ibb.co/JkGBhcz/up-Dissabled.png";
 const activeBtnPad = "https://i.ibb.co/v4PVny5/up.png";
+
+
+// --- Valores en ventana de mensajes ---
+const messagesValues = [];
 
 const startG = {
     "id": "startG",
@@ -120,11 +122,18 @@ const levelPass = {
     "topBanner": imgBanLevCompleted,
     "btnText": "Next Level"
 }
-
+const levelsPassed = {
+    "id": "levelsPassed",
+    "topBanner": imgBanWinner,
+    "middleImg": imgWinner,
+    "bottomText": "You save Rocko",
+}
 messagesValues.push(startG);
 messagesValues.push(timeUp);
 messagesValues.push(gameO);
 messagesValues.push(levelPass);
+messagesValues.push(levelsPassed);
+
 
 const stages = {
     0 : "stageMagma",
@@ -153,6 +162,7 @@ let collitionAreas;
 
 // ---Function to fill up Array with maps images ---
 let arrayImgMaps = [];
+console.log(arrayImgMaps);
 
 function loadMaps(obj){
     for(key in obj){
@@ -167,7 +177,7 @@ function loadMaps(obj){
                 map.src = mapsImgs["Laberinto1"];
                 arrayMap.push(map);
             }else {
-                for(let i = 1; i < 2; i++){
+                for(let i = 1; i < 6; i++){
                     let map = new Image();
                     let srcInfo = mapsImgs[name + i];
                     map.src = srcInfo;
@@ -187,18 +197,6 @@ loadMaps(stagesNames);
 mapsInfo = {
     "stageMagma":{
         "areas" : [`
-            PPPPPPPPPP
-            PFPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PSPPPPPPPP
-            PPPPPPPPPP
-        `,
-        `
             CCCPPPCPPP
             CFCPCPCPCP
             CPPPCPPPCP
@@ -264,18 +262,6 @@ mapsInfo = {
     "stageWater":{
         "areas" : [`
             PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPSPPPPP
-            PPPPPPPPPP
-            PPPPPPPFPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-        `,
-        `
-            PPPPPPPPPP
             PCCCCCCCCP
             PCPPPPPPCP
             PCPCCCCPPP
@@ -339,18 +325,6 @@ mapsInfo = {
     },
     "stageSnow":{
         "areas" : [`
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPFP
-            PPPPPPPPPP
-            PPPPPPPPSP
-            PPPPPPPPPP
-        `,
-        `
             PPPCCPPPPP
             PCPCCPCCCP
             PCPPPPCCPP
@@ -415,18 +389,6 @@ mapsInfo = {
     },
     "stageSand":{
         "areas" : [`
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PSPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PFPPPPPPPP
-            PPPPPPPPPP
-        `,
-        `
             PPPPPPPPPC
             PCCCCCCPPP
             PCPPPCCCCP
@@ -491,18 +453,6 @@ mapsInfo = {
     },
     "stageJungle":{
         "areas" : [`
-            PPPPPPPPPP
-            PSPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PPPPPPPPPP
-            PFPPPPPPPP
-            PPPPPPPPPP
-        `,
-        `
             CPPPCPPPPP
             PSCPPPCCCP
             CCCCCCCCCP
