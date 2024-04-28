@@ -78,6 +78,10 @@ let btnStatusWindow = document.createElement("button");
 btnStatusWindow.classList.add("btnMessStyle", "btnHov");
 btnStatusWindow.addEventListener("click", filter_LD);
 
+let btnStatusWindowC = document.createElement("button");
+btnStatusWindowC.classList.add("btnMessStyle", "btnHov");
+btnStatusWindowC.addEventListener("click", filter_Cn);
+
 let btnStatusWindowGO_TU = document.createElement("button");
 btnStatusWindowGO_TU.classList.add("btnMessStyle", "btnHov");
 btnStatusWindowGO_TU.addEventListener("click", filter_GO_TU);
@@ -94,6 +98,9 @@ function fncStart(){
 function filter_LD() {
     defaulValues();
     startGame(); 
+}
+function filter_Cn() {
+    levelPassWindowCn();
 }
 function filter_GO_TU() {
     resetValuesStart();
@@ -123,6 +130,7 @@ function defaulValues(){
     beginningWindow = true;
     statusWindow = false;
     levelPassWin = false;
+    levelsPassedWin = false;
     liveSet = false;
     timeStart = undefined;
     objSeconds = {};
@@ -555,7 +563,7 @@ function levelDone(){
         mapNumber = 0;
         level = 1;
         stCount++;
-        current = "levelPass";
+        current = "stagePass";
         levelPassWin = true;
         levelPassWindow();
     }
@@ -563,7 +571,7 @@ function levelDone(){
         mapNumber = 0;
         level = 1;
         stCount++;
-        current = "levelsPassed";
+        current = "dinoSaved";
         levelsPassedWin = true;
         levelsPassedWindow();
      }
@@ -648,10 +656,10 @@ function levelPassWindow(){
     winMessage.innerHTML = "";
 
     active = messagesValues.find(opc => opc["id"] == current);
-
     const messTitle = document.createElement("div");
     messTitle.classList.add("clTop");
-    messTitle.append(active["topBanner"]);
+
+    messTitle.append(active["topBanner1"]);
 
     const timeLeft = document.createElement("div");
 
@@ -694,13 +702,45 @@ function levelPassWindow(){
 
     const btnStatusWindowCont = document.createElement("div");
     btnStatusWindowCont.classList.add("statusClass");
-    btnStatusWindow.innerHTML = active["btnText"];
-    btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
+
+    if(stageName == "Jungle"){
+        btnStatusWindowC.innerHTML = active["btnTextC"];
+        btnStatusWindowCont.append(btnExitWindow, btnStatusWindowC);
+    }else{
+        btnStatusWindow.innerHTML = active["btnTextN"];
+        btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
+    };
 
     winMessage.append(messTitle, timeLeft, totalTimeCont, priceCont, btnStatusWindowCont);
     
     disableBtnsMsgs();
     counting();
+};
+function levelPassWindowCn(){
+    recordPos = false;
+    statusWindow = true;
+    disableBtns();
+
+    winMessage.innerHTML = "";
+    const active = messagesValues.find(opc => opc["id"] == current);
+    
+    const bannerStatusWindow = document.createElement("div");
+    bannerStatusWindow.classList.add("clTop");
+    bannerStatusWindow.append(active["topBanner2"]);
+
+    const imgStatusWindow = document.createElement("div");
+    imgStatusWindow.classList.add("clMiddle");
+    imgStatusWindow.append(active["middleImg"]);
+
+    const msgStatusWindow = document.createElement("h1");
+    msgStatusWindow.classList.add("clBottom");
+    msgStatusWindow.innerHTML = active["bottomText"];
+
+    const btnStatusWindowCont = document.createElement("div");
+    btnStatusWindowCont.classList.add("statusClass");
+    btnStatusWindow.innerHTML = active["btnTextC"];
+    btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
+    winMessage.append(bannerStatusWindow, imgStatusWindow, msgStatusWindow, btnStatusWindowCont);
 };
 function levelsPassedWindow(){
     winMessage.innerHTML = "";

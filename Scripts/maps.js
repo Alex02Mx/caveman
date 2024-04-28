@@ -34,30 +34,34 @@ const mapsImgs = {
 
 // --- banners ---
 let imgBanCaveman = new Image();
-imgBanCaveman.src = "https://i.ibb.co/S3DhLbb/the-caveman-banner.png";
+imgBanCaveman.src = "/assets/banner-start.png";
 let imgBanTimeUP = new Image();
-imgBanTimeUP.src = "https://i.ibb.co/KG0W0Zm/time-up-banner.png";
+imgBanTimeUP.src = "/assets/banner-time-up.png";
 let imgBanGameOver = new Image();
-imgBanGameOver.src = "https://i.ibb.co/hs2Gy6d/game-over-banner.png";
-let imgBanLevCompleted = new Image();
-imgBanLevCompleted.src = "https://i.ibb.co/6JSZk13/stagel-completed-banner.png";
-let imgBanWinner = new Image();
-imgBanWinner.src = "https://i.ibb.co/1MDRC1z/winner-banner.png";
+imgBanGameOver.src = "/assets/banner-game-over.png";
+let imgBanStageComp = new Image();
+imgBanStageComp.src = "/assets/banner-levels-done.png";
+let imgBanStagesComp = new Image();
+imgBanStagesComp.src = "/assets/banner-stage-done.png";
+let imgBanPetFound = new Image();
+imgBanPetFound.src = "/assets/banner-pet-found.png";
 
 // --- caveman status ---
-let imgStart = new Image();
-imgStart.src = "https://i.ibb.co/DMpj4jL/confuse.png";
+let imgStartG = new Image();
+imgStartG.src = "/assets/walk.png";
 let imgGameOver = new Image();
-imgGameOver.src = "https://i.ibb.co/F6JCQRh/game-over.png";
+imgGameOver.src = "/assets/game-over.png";
 let imgTime = new Image();
-imgTime.src = "https://i.ibb.co/NpB93CX/crying.png";
+imgTime.src = "/assets/time-up.png";
 let imgWinner = new Image();
-imgWinner.src = "https://i.ibb.co/bWgJFRF/win.png";
+imgWinner.src = "/assets/levels-done.png";
+let imgFound = new Image();
+imgFound.src = "/assets/pet-found-dino.png";
 
 // --- Caveman ----
 // --- Walk ---
 let imgCavMan = new Image();
-imgCavMan.src = "https://i.ibb.co/wrSDrcX/walk-1.png";
+imgCavMan.src = "/assets/walk.png";
 // --- Pet ---
 let imgPet = new Image();
 imgPet.src = "/assets/pet.png";
@@ -81,18 +85,18 @@ imgFallingJungle.src = "https://i.ibb.co/XyKK2Hn/falling-jungle.png";
 
 // --- valuies Imgs ---
 const plusLive = new Image();
-plusLive.src = "https://i.ibb.co/RgBXBy5/1up.png";
+plusLive.src = "/assets//1up.png";
 const plusSeconds = new Image();
-plusSeconds.src = "https://i.ibb.co/XtR5FBj/10sec.png";
+plusSeconds.src = "/assets/10sec.png";
 const noEnough = new Image();
-noEnough.src = "https://i.ibb.co/RQnxxv7/no-enough.png";
+noEnough.src = "/assets/no_enough.png";
 
 // --- icon live img ---
-const iconLive = "https://i.ibb.co/Tq0JTn4/happy-live.png";
+const iconLive = "/assets/icon-live.png";
 
 // --- btns imgs ---
-const inactiveBtnPad = "https://i.ibb.co/JkGBhcz/up-Dissabled.png";
-const activeBtnPad = "https://i.ibb.co/v4PVny5/up.png";
+const inactiveBtnPad = "/assets/upDissabled.png";
+const activeBtnPad = "/assets/up.png";
 
 
 // --- Valores en ventana de mensajes ---
@@ -101,9 +105,9 @@ const messagesValues = [];
 const startG = {
     "id": "startG",
     "topBanner": imgBanCaveman,
-    "middleImg": imgStart,
+    "middleImg": imgStartG,
     "bottomText": "Press Start To Play",
-    "hisText": "Grunk needs of your aid. His loyal companion, Titan, has gone missing, leaving Grunk distraught and in search of answers. Will you join Grunk on his quest to find Titan, navigating treacherous terrain and unknown dangers to reunite them once more? Your help could make all the difference in this primal tale of friendship and loyalty.",
+    "hisText": "Link needs of your aid. His loyal companion, Titan, has gone missing, leaving Grunk distraught and in search of answers. Will you join Grunk on his quest to find Titan, navigating treacherous terrain and unknown dangers to reunite them once more? Your help could make all the difference in this primal tale of friendship and loyalty.",
 };
 const timeUp = {
     "id": "timeUp",
@@ -117,22 +121,28 @@ const gameO = {
     "middleImg": imgGameOver,
     "bottomText": "You Lose",
 };
-const levelPass = {
-    "id": "levelPass",
-    "topBanner": imgBanLevCompleted,
-    "btnText": "Next Level"
-}
-const levelsPassed = {
-    "id": "levelsPassed",
-    "topBanner": imgBanWinner,
+const stagePass = {
+    "id": "stagePass",
+    "topBanner1": imgBanStageComp,
+    "topBanner2": imgBanStagesComp,
     "middleImg": imgWinner,
-    "bottomText": "You save Rocko",
-}
+    "bottomText": "Find Rocko",
+    "btnTextN": "Next Level",
+    "btnTextC": "Continue"
+};
+const dinoFound = {
+    "id": "dinoSaved",
+    "topBanner": imgBanPetFound,
+    "middleImg": imgFound,
+    "bottomText": "You saved Rocko",
+    "btnText": "Play Again"
+};
+
 messagesValues.push(startG);
 messagesValues.push(timeUp);
 messagesValues.push(gameO);
-messagesValues.push(levelPass);
-messagesValues.push(levelsPassed);
+messagesValues.push(stagePass);
+messagesValues.push(dinoFound);
 
 
 const stages = {
@@ -162,7 +172,6 @@ let collitionAreas;
 
 // ---Function to fill up Array with maps images ---
 let arrayImgMaps = [];
-console.log(arrayImgMaps);
 
 function loadMaps(obj){
     for(key in obj){
@@ -177,7 +186,7 @@ function loadMaps(obj){
                 map.src = mapsImgs["Laberinto1"];
                 arrayMap.push(map);
             }else {
-                for(let i = 1; i < 6; i++){
+                for(let i = 1; i < 2; i++){
                     let map = new Image();
                     let srcInfo = mapsImgs[name + i];
                     map.src = srcInfo;
@@ -196,7 +205,20 @@ loadMaps(stagesNames);
 // --- Maps ---
 mapsInfo = {
     "stageMagma":{
-        "areas" : [`
+        "areas" : [
+        //     `
+        //     PPPPPPPPPP
+        //     PFPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PSPPPPPPPP
+        //     PPPPPPPPPP
+        // `,
+        `
             CCCPPPCPPP
             CFCPCPCPCP
             CPPPCPPPCP
@@ -260,7 +282,20 @@ mapsInfo = {
         "collitionImg" : imgFallingFire
     },
     "stageWater":{
-        "areas" : [`
+        "areas" : [
+        //     `
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPSPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPFPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        // `,
+        `
             PPPPPPPPPP
             PCCCCCCCCP
             PCPPPPPPCP
@@ -324,7 +359,20 @@ mapsInfo = {
         "collitionImg" : imgFallingWater
     },
     "stageSnow":{
-        "areas" : [`
+        "areas" : [
+        //     `
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPFP
+        //     PPPPPPPPPP
+        //     PPPPPPPPSP
+        //     PPPPPPPPPP
+        // `,
+        `
             PPPCCPPPPP
             PCPCCPCCCP
             PCPPPPCCPP
@@ -388,7 +436,20 @@ mapsInfo = {
         "collitionImg" : imgFallingSnow
     },
     "stageSand":{
-        "areas" : [`
+        "areas" : [
+        //     `
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PSPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PFPPPPPPPP
+        //     PPPPPPPPPP
+        // `,
+        `
             PPPPPPPPPC
             PCCCCCCPPP
             PCPPPCCCCP
@@ -452,7 +513,20 @@ mapsInfo = {
         "collitionImg" : imgFallingSand
     },
     "stageJungle":{
-        "areas" : [`
+        "areas" : [
+        //     `
+        //     PPPPPPPPPP
+        //     PSPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PPPPPPPPPP
+        //     PFPPPPPPPP
+        //     PPPPPPPPPP
+        // `,
+        `
             CPPPCPPPPP
             PSCPPPCCCP
             CCCCCCCCCP

@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
 :root{
     --darkBrown: rgb(59, 36, 0);
     --brown:  rgb(110, 78, 15);
@@ -20,7 +44,10 @@ body{
     box-sizing: border-box;
     background-color: #322001;
     /* background-color: var(--brown); */
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
 }
 .game_container {
     display: grid;
@@ -179,6 +206,7 @@ canvas{
     height: 50px;
 }
 .clMiddle {
+    margin-top: 10px;
     width: auto;
     height: 80px;
     filter: drop-shadow(0 1px 1px black);
@@ -193,13 +221,13 @@ canvas{
     margin-top: 5px;
     padding: 10px;
     width: 250px;
-    height: 75px;
+    height: 60px;
    
 }
 .clhis {
     position: absolute;
     color: var(--white);
-    font-weight: bold;
+    font-weight: 700;
     animation: his 15s linear infinite;
 }
 @keyframes his {
@@ -222,11 +250,11 @@ canvas{
 .contLevelsResult {
     filter: drop-shadow(0 1px 1px black);
     width: auto;
-    height: 140px;
+    height: 125px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0px 5px 5px 5px;
+    padding: 10px 5px 5px 5px;
     color: var(--white);
     font-size: 18px;
     font-weight: bold;
@@ -263,7 +291,7 @@ canvas{
     height: 36px;
     /* -webkit-text-stroke: 1px rgb(0, 0, 0); */
     color: var(--darkOrange);
-    font-size: 27px;
+    font-size: 25px;
     font-weight: bold;
     animation: press 1s ease 1;
 }
