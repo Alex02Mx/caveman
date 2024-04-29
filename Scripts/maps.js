@@ -29,7 +29,7 @@ const mapsImgs = {
     "Jungle4": "https://i.ibb.co/Jvvb5ZZ/Jungle-level-4.jpg",
     "Jungle5": "https://i.ibb.co/X5YmX6Q/Jungle-level-5.jpg",
 
-    "Laberinto1": "/assets/laberinto_01.jpg"
+    "Laberinto1": "./assets/laberinto_01.jpg"
 };
 
 // --- banners ---
@@ -48,13 +48,13 @@ imgBanPetFound.src = "./assets/banner-pet-found.png";
 
 // --- caveman status ---
 let imgStartG = new Image();
-imgStartG.src = "./assets/walk.png";
+imgStartG.src = "./assets/start-shell.png";
 let imgGameOver = new Image();
 imgGameOver.src = "./assets/game-over.png";
 let imgTime = new Image();
 imgTime.src = "./assets/time-up.png";
-let imgWinner = new Image();
-imgWinner.src = "./assets/levels-done.png";
+
+
 let imgInfo = new Image();
 imgInfo.src = "./assets/pet-info-dino.png";
 let imgFound = new Image();
@@ -64,9 +64,7 @@ imgFound.src = "./assets/pet-found-dino.png";
 // --- Walk ---
 let imgCavMan = new Image();
 imgCavMan.src = "./assets/walk.png";
-// --- Pet ---
-let imgPet = new Image();
-imgPet.src = "./assets/pet.png";
+
 
 // --- falling ---
 // --- fire ---
@@ -100,16 +98,19 @@ const iconLive = "./assets/icon-live.png";
 const inactiveBtnPad = "./assets/upDissabled.png";
 const activeBtnPad = "./assets/up.png";
 
+// --- conversation imgs ---
+const conversationImg = new Image();
+conversationImg.src = "./assets/conversation.png";
 
-// --- Valores en ventana de mensajes ---
+// --- Values in windows ---
 const messagesValues = [];
 
 const startG = {
     "id": "startG",
     "topBanner": imgBanCaveman,
     "middleImg": imgStartG,
+    "hisText": "Help Link to find his friendly pet Titan.",
     "bottomText": "Press Start To Play",
-    "hisText": "Link needs of your aid. His loyal companion, Titan, has gone missing, leaving Grunk distraught and in search of answers. Will you join Grunk on his quest to find Titan, navigating treacherous terrain and unknown dangers to reunite them once more? Your help could make all the difference in this primal tale of friendship and loyalty.",
 };
 const timeUp = {
     "id": "timeUp",
@@ -133,7 +134,7 @@ const stagePass = {
 };
 const dinoInfo = {
     "id": "dinoInfo",
-    "topBanner": "Hey Link, you can find Rocko at the end of the laberynth",
+    "topBanner": conversationImg,
     "middleImg": imgInfo,
     "bottomText": "Find Rocko",
     "btnText": "Let's Go",
@@ -142,7 +143,7 @@ const dinoFound = {
     "id": "dinoFound",
     "topBanner": imgBanPetFound,
     "middleImg": imgFound,
-    "bottomText": "You saved Rocko",
+    "bottomText": "You have found Rocko",
     "btnText": "Play Again"
 };
 

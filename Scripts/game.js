@@ -624,13 +624,7 @@ function statusWindowFnc(){
     const active = messagesValues.find(opc => opc["id"] == current);
     
     const bannerStatusWindow = document.createElement("div");
-
-    if(stageInfo){
-        bannerStatusWindow.classList.add("clTop", "clTopSty");
-    }else{
-        bannerStatusWindow.classList.add("clTop");
-    }
-
+    bannerStatusWindow.classList.add("clTop");
     bannerStatusWindow.append(active["topBanner"]);
 
     const imgStatusWindow = document.createElement("div");

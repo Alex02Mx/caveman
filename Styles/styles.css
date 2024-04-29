@@ -203,9 +203,9 @@ canvas{
 }
 .clTop {
     width: 250px;
-    height: 50px;
+    height: auto;
 }
-.clTopSty {
+/* .clTopSty {
     box-sizing: border-box;
     background-color: var(--white);
     border: 2px solid var(--black);
@@ -213,7 +213,7 @@ canvas{
     padding: 2px 12px 2px 12px;
     color: var(--black);
     font-size: 17px;
-}
+} */
 .clMiddle {
     margin-top: 10px;
     width: auto;
@@ -221,40 +221,21 @@ canvas{
     filter: drop-shadow(0 1px 1px black);
 }
 .hisContainer {
-    position: relative;
-    text-align:left;
-    overflow-y: hidden;
-    /* background-color: rgba(0, 0, 0, 0.2); */
-    border: 1px solid rgb(165, 164, 164);
+    box-sizing: border-box;
+    text-align: center;
+    /* border: 1px solid rgb(165, 164, 164); */
+    border: 2px solid var(--darkOrange);
     border-radius: 10px;
-    margin-top: 5px;
+    margin-top: 10px;
     padding: 10px;
     width: 250px;
     height: 60px;
-   
+    background-color: rgb(230, 230, 230);
 }
 .clhis {
-    position: absolute;
-    color: var(--white);
-    font-weight: 700;
-    animation: his 15s linear infinite;
-}
-@keyframes his {
-    0% {
-        top: 6px;
-    }
-    10% {
-        top: 6px
-    }
-    88% {
-        top: -160px;
-    }
-    98% {
-        top: -160px;
-    }
-    100% {
-        top: 0px;
-    }
+    color: var(--black);
+    font-size: 16px;
+    font-weight: bold;
 }
 .contLevelsResult {
     filter: drop-shadow(0 1px 1px black);
