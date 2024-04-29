@@ -34,39 +34,39 @@ const mapsImgs = {
 
 // --- banners ---
 let imgBanCaveman = new Image();
-imgBanCaveman.src = "/assets/banner-start.png";
+imgBanCaveman.src = "../assets/banner-start.png";
 let imgBanTimeUP = new Image();
-imgBanTimeUP.src = "/assets/banner-time-up.png";
+imgBanTimeUP.src = "../assets/banner-time-up.png";
 let imgBanGameOver = new Image();
-imgBanGameOver.src = "/assets/banner-game-over.png";
+imgBanGameOver.src = "../assets/banner-game-over.png";
 let imgBanStageComp = new Image();
-imgBanStageComp.src = "/assets/banner-levels-done.png";
+imgBanStageComp.src = "../assets/banner-levels-done.png";
 let imgBanStagesComp = new Image();
-imgBanStagesComp.src = "/assets/banner-stage-done.png";
+imgBanStagesComp.src = "../assets/banner-stage-done.png";
 let imgBanPetFound = new Image();
-imgBanPetFound.src = "/assets/banner-pet-found.png";
+imgBanPetFound.src = "../assets/banner-pet-found.png";
 
 // --- caveman status ---
 let imgStartG = new Image();
-imgStartG.src = "/assets/walk.png";
+imgStartG.src = "../assets/walk.png";
 let imgGameOver = new Image();
-imgGameOver.src = "/assets/game-over.png";
+imgGameOver.src = "../assets/game-over.png";
 let imgTime = new Image();
-imgTime.src = "/assets/time-up.png";
+imgTime.src = "../assets/time-up.png";
 let imgWinner = new Image();
-imgWinner.src = "/assets/levels-done.png";
+imgWinner.src = "../assets/levels-done.png";
 let imgInfo = new Image();
-imgInfo.src = "/assets/pet-info-dino.png";
+imgInfo.src = "../assets/pet-info-dino.png";
 let imgFound = new Image();
-imgFound.src = "/assets/pet-found-dino.png";
+imgFound.src = "../assets/pet-found-dino.png";
 
 // --- Caveman ----
 // --- Walk ---
 let imgCavMan = new Image();
-imgCavMan.src = "/assets/walk.png";
+imgCavMan.src = "../assets/walk.png";
 // --- Pet ---
 let imgPet = new Image();
-imgPet.src = "/assets/pet.png";
+imgPet.src = "../assets/pet.png";
 
 // --- falling ---
 // --- fire ---
@@ -87,18 +87,18 @@ imgFallingJungle.src = "https://i.ibb.co/XyKK2Hn/falling-jungle.png";
 
 // --- valuies Imgs ---
 const plusLive = new Image();
-plusLive.src = "/assets//1up.png";
+plusLive.src = "../assets/1up.png";
 const plusSeconds = new Image();
-plusSeconds.src = "/assets/10sec.png";
+plusSeconds.src = "../assets/10sec.png";
 const noEnough = new Image();
-noEnough.src = "/assets/no_enough.png";
+noEnough.src = "../assets/no_enough.png";
 
 // --- icon live img ---
-const iconLive = "/assets/icon-live.png";
+const iconLive = "../assets/icon-live.png";
 
 // --- btns imgs ---
-const inactiveBtnPad = "/assets/upDissabled.png";
-const activeBtnPad = "/assets/up.png";
+const inactiveBtnPad = "../assets/upDissabled.png";
+const activeBtnPad = "../assets/up.png";
 
 
 // --- Valores en ventana de mensajes ---
