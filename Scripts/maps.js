@@ -55,6 +55,8 @@ let imgTime = new Image();
 imgTime.src = "/assets/time-up.png";
 let imgWinner = new Image();
 imgWinner.src = "/assets/levels-done.png";
+let imgInfo = new Image();
+imgInfo.src = "/assets/pet-info-dino.png";
 let imgFound = new Image();
 imgFound.src = "/assets/pet-found-dino.png";
 
@@ -114,24 +116,30 @@ const timeUp = {
     "topBanner": imgBanTimeUP,
     "middleImg": imgTime,
     "bottomText": "Time ran out",
+    "btnText": "Play Again",
 };
 const gameO = {
     "id": "gameO",
     "topBanner": imgBanGameOver,
     "middleImg": imgGameOver,
     "bottomText": "You Lose",
+    "btnText": "Play Again",
 };
 const stagePass = {
     "id": "stagePass",
     "topBanner1": imgBanStageComp,
     "topBanner2": imgBanStagesComp,
-    "middleImg": imgWinner,
+    "btnText": "Next Level",
+};
+const dinoInfo = {
+    "id": "dinoInfo",
+    "topBanner": "Hey Link, you can find Rocko at the end of the laberynth",
+    "middleImg": imgInfo,
     "bottomText": "Find Rocko",
-    "btnTextN": "Next Level",
-    "btnTextC": "Continue"
+    "btnText": "Let's Go",
 };
 const dinoFound = {
-    "id": "dinoSaved",
+    "id": "dinoFound",
     "topBanner": imgBanPetFound,
     "middleImg": imgFound,
     "bottomText": "You saved Rocko",
@@ -142,6 +150,7 @@ messagesValues.push(startG);
 messagesValues.push(timeUp);
 messagesValues.push(gameO);
 messagesValues.push(stagePass);
+messagesValues.push(dinoInfo);
 messagesValues.push(dinoFound);
 
 
@@ -151,7 +160,7 @@ const stages = {
     2 : "stageSnow",
     3 : "stageSand",
     4 : "stageJungle",
-    5 : "stageLaberinto",
+    5 : "stageLaberynth",
     6 : "EndGame"
 };
 const stagesNames = {
@@ -160,7 +169,7 @@ const stagesNames = {
     2 : "Snow",
     3 : "Sand",
     4 : "Jungle",
-    5 : "Laberinto",
+    5 : "Laberynth",
     6 : "Game"
 };
 
@@ -181,12 +190,12 @@ function loadMaps(obj){
             break;
         }
         else{
-            if( name == "Laberinto") {
+            if( name == "Laberynth") {
                 let map = new Image();
                 map.src = mapsImgs["Laberinto1"];
                 arrayMap.push(map);
             }else {
-                for(let i = 1; i < 2; i++){
+                for(let i = 1; i < 6; i++){
                     let map = new Image();
                     let srcInfo = mapsImgs[name + i];
                     map.src = srcInfo;
@@ -214,7 +223,7 @@ mapsInfo = {
         //     PPPPPPPPPP
         //     PPPPPPPPPP
         //     PPPPPPPPPP
-        //     PPPPPPPPPP
+        //     PCPPPPPPPP
         //     PSPPPPPPPP
         //     PPPPPPPPPP
         // `,
@@ -589,7 +598,7 @@ mapsInfo = {
         "caveManImg" : imgCavMan,
         "collitionImg" : imgFallingJungle
     },
-    "stageLaberinto":{
+    "stageLaberynth":{
         "areas" : [`
         PPPPPPPPPP
         PPPPPPPPPP

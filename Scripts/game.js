@@ -44,7 +44,8 @@ let elementSize;
 let beginningWindow = true;
 let statusWindow = false;
 let levelPassWin = false;
-let levelsPassedWin = false;
+let stageInfo = false;
+let endInfo = false;
 let current = "startG";
 
 let stCount = 0;
@@ -72,21 +73,17 @@ let liveSet = false
 let btnExitWindow = document.createElement("button");
 btnExitWindow.classList.add("btnMessStyle", "btnHov");
 btnExitWindow.innerHTML =  "Exit";
-btnExitWindow.addEventListener("click", fncStart);
+btnExitWindow.addEventListener("click", filterHome);
 
 let btnStatusWindow = document.createElement("button");
 btnStatusWindow.classList.add("btnMessStyle", "btnHov");
-btnStatusWindow.addEventListener("click", filter_LD);
-
-let btnStatusWindowC = document.createElement("button");
-btnStatusWindowC.classList.add("btnMessStyle", "btnHov");
-btnStatusWindowC.addEventListener("click", filter_Cn);
+btnStatusWindow.addEventListener("click", filterStagePassed);
 
 let btnStatusWindowGO_TU = document.createElement("button");
 btnStatusWindowGO_TU.classList.add("btnMessStyle", "btnHov");
 btnStatusWindowGO_TU.addEventListener("click", filter_GO_TU);
 
-function fncStart(){
+function filterHome(){
     livesMsg.innerHTML = "";
     timeMsg.innerHTML = "";
     stageMsg.innerHTML = "";
@@ -95,17 +92,15 @@ function fncStart(){
     resetValuesStart();
     beginningFilter();
 };
-function filter_LD() {
+function filterStagePassed() {
     defaulValues();
     startGame(); 
-}
-function filter_Cn() {
-    levelPassWindowCn();
 }
 function filter_GO_TU() {
     resetValuesStart();
     startGame(); 
 }
+
 
 function escuchador(evento){
     switch(evento.keyCode){
@@ -126,16 +121,17 @@ function escuchador(evento){
     };
 };
 
+
 function defaulValues(){
     beginningWindow = true;
     statusWindow = false;
     levelPassWin = false;
-    levelsPassedWin = false;
+    stageInfo = false;
+    endInfo = false;
     liveSet = false;
     timeStart = undefined;
     objSeconds = {};
     numIncr = 0;
-    // priceImg.removeAttribute("src");
     playerPos["x"] = undefined;
     playerPos["y"] = undefined;
 }
@@ -174,7 +170,7 @@ function btnRightXnewValue(){
 }
 function btnUp(){
     if( !( playerPos["y"] < elementSize) ){
-        if(stageName == "Laberinto"){ 
+        if(stageName == "Laberynth"){ 
             let xp = playerPos["x"];
             let yp = playerPos["y"];
             if( !(yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize)-1 && xp < (elementSize)+1 ||
@@ -205,7 +201,7 @@ function btnUp(){
 };
 function btnDown(){
     if(!( (playerPos["y"] + elementSize) >= canvasSize ) ){
-        if(stageName == "Laberinto"){
+        if(stageName == "Laberynth"){
             let xp = playerPos["x"];
             let yp = playerPos["y"];
             if( !(yp > 0 - 1 && yp < 0 + 1 && xp >(elementSize)-1 && xp < (elementSize)+1 ||
@@ -246,7 +242,7 @@ function btnDown(){
 };
 function btnLeft(){
     if( !( playerPos["x"] < elementSize) ){
-        if(stageName == "Laberinto"){
+        if(stageName == "Laberynth"){
             let xp = playerPos["x"];
             let yp = playerPos["y"];
             if( !(xp > elementSize -1 && xp < (elementSize)+1 && yp >(elementSize * 5)-1 && yp < (elementSize * 8)+1 ||
@@ -277,7 +273,7 @@ function btnLeft(){
 }
 function btnRight(){
     if( !( (playerPos["x"] + elementSize) >= canvasSize ) ){
-        if(stageName == "Laberinto"){
+        if(stageName == "Laberynth"){
             let xp = playerPos["x"];
             let yp = playerPos["y"];
             if( !(xp > 0 - 1 && xp < 0 + 1 && yp >(elementSize * 5)-1 && yp < (elementSize * 8)+1 ||
@@ -364,14 +360,11 @@ function beginningFilter(){
     if(beginningWindow){
         beginningWindowFnc();
     }
-    else if(statusWindow){
+    else if(statusWindow || stageInfo || endInfo){
         statusWindowFnc();
     }
     else if(levelPassWin){
         levelPassWindow();
-    }
-    else if(levelsPassedWin){
-        levelsPassedWindow();
     }
     else{
         startGame();
@@ -567,13 +560,13 @@ function levelDone(){
         levelPassWin = true;
         levelPassWindow();
     }
-    else if(dirAreas == "stageLaberinto") {
+    else if(dirAreas == "stageLaberynth") {
         mapNumber = 0;
         level = 1;
         stCount++;
-        current = "dinoSaved";
-        levelsPassedWin = true;
-        levelsPassedWindow();
+        current = "dinoFound";
+        endInfo = true;
+        statusWindowFnc();
      }
      else if(dirAreas == "EndGame"){
         dirAreas = undefined;
@@ -581,7 +574,6 @@ function levelDone(){
         level = 1;
         stCount = 0;
         lives = 3;
-        // printRecord();
     }
 };
 
@@ -632,7 +624,13 @@ function statusWindowFnc(){
     const active = messagesValues.find(opc => opc["id"] == current);
     
     const bannerStatusWindow = document.createElement("div");
-    bannerStatusWindow.classList.add("clTop");
+
+    if(stageInfo){
+        bannerStatusWindow.classList.add("clTop", "clTopSty");
+    }else{
+        bannerStatusWindow.classList.add("clTop");
+    }
+
     bannerStatusWindow.append(active["topBanner"]);
 
     const imgStatusWindow = document.createElement("div");
@@ -644,9 +642,18 @@ function statusWindowFnc(){
     msgStatusWindow.innerHTML = active["bottomText"];
 
     const btnStatusWindowCont = document.createElement("div");
+
     btnStatusWindowCont.classList.add("statusClass");
-    btnStatusWindowGO_TU.innerHTML = "Play Again";
-    btnStatusWindowCont.append(btnExitWindow, btnStatusWindowGO_TU);
+
+    if(stageName == "Jungle"){
+        btnStatusWindow.innerHTML = active["btnText"];
+        btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
+    }
+    else{
+        btnStatusWindowGO_TU.innerHTML = active["btnText"];
+        btnStatusWindowCont.append(btnExitWindow, btnStatusWindowGO_TU);
+    };
+
     winMessage.append(bannerStatusWindow, imgStatusWindow, msgStatusWindow, btnStatusWindowCont);
 };
 function levelPassWindow(){
@@ -659,7 +666,12 @@ function levelPassWindow(){
     const messTitle = document.createElement("div");
     messTitle.classList.add("clTop");
 
-    messTitle.append(active["topBanner1"]);
+    if(stageName == "Jungle"){
+        messTitle.append(active["topBanner2"]);
+    }
+    else{
+        messTitle.append(active["topBanner1"]);
+    };
 
     const timeLeft = document.createElement("div");
 
@@ -704,67 +716,15 @@ function levelPassWindow(){
     btnStatusWindowCont.classList.add("statusClass");
 
     if(stageName == "Jungle"){
-        btnStatusWindowC.innerHTML = active["btnTextC"];
-        btnStatusWindowCont.append(btnExitWindow, btnStatusWindowC);
+        winMessage.append(messTitle, timeLeft, totalTimeCont, priceCont);
     }else{
-        btnStatusWindow.innerHTML = active["btnTextN"];
+        btnStatusWindow.innerHTML = active["btnText"];
         btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
+        winMessage.append(messTitle, timeLeft, totalTimeCont, priceCont, btnStatusWindowCont);
     };
-
-    winMessage.append(messTitle, timeLeft, totalTimeCont, priceCont, btnStatusWindowCont);
-    
     disableBtnsMsgs();
     counting();
 };
-function levelPassWindowCn(){
-    recordPos = false;
-    statusWindow = true;
-    disableBtns();
-
-    winMessage.innerHTML = "";
-    const active = messagesValues.find(opc => opc["id"] == current);
-    
-    const bannerStatusWindow = document.createElement("div");
-    bannerStatusWindow.classList.add("clTop");
-    bannerStatusWindow.append(active["topBanner2"]);
-
-    const imgStatusWindow = document.createElement("div");
-    imgStatusWindow.classList.add("clMiddle");
-    imgStatusWindow.append(active["middleImg"]);
-
-    const msgStatusWindow = document.createElement("h1");
-    msgStatusWindow.classList.add("clBottom");
-    msgStatusWindow.innerHTML = active["bottomText"];
-
-    const btnStatusWindowCont = document.createElement("div");
-    btnStatusWindowCont.classList.add("statusClass");
-    btnStatusWindow.innerHTML = active["btnTextC"];
-    btnStatusWindowCont.append(btnExitWindow, btnStatusWindow);
-    winMessage.append(bannerStatusWindow, imgStatusWindow, msgStatusWindow, btnStatusWindowCont);
-};
-function levelsPassedWindow(){
-    winMessage.innerHTML = "";
-    const active = messagesValues.find(opc => opc["id"] == current);
-    
-    const bannerStatusWindow = document.createElement("div");
-    bannerStatusWindow.classList.add("clTop");
-    bannerStatusWindow.append(active["topBanner"]);
-
-    const imgStatusWindow = document.createElement("div");
-    imgStatusWindow.classList.add("clMiddle");
-    imgStatusWindow.append(active["middleImg"]);
-
-    const msgStatusWindow = document.createElement("h1");
-    msgStatusWindow.classList.add("clBottom");
-    msgStatusWindow.innerHTML = active["bottomText"];
-
-    const btnStatusWindowCont = document.createElement("div");
-    btnStatusWindowCont.classList.add("statusClass");
-    btnStatusWindowGO_TU.innerHTML = "Play Again";
-    btnStatusWindowCont.append(btnStatusWindowGO_TU);
-    winMessage.append(bannerStatusWindow, imgStatusWindow, msgStatusWindow, btnStatusWindowCont);
-};
-
 
 
 function startTimer(){
@@ -783,7 +743,6 @@ function imprTimeTimer(){
         winMessage.classList.remove("winOff");
         current = "timeUp";
         statusWindowFnc();
-        // resetValuesStart();
     }else{
         couterColor();
         timeMsg.innerHTML = counter;
@@ -813,7 +772,8 @@ function printcount(){
     if(numIncr < totalTimeLeft){
         numIncr++;
         totalTimeParr.innerHTML = `Total Time Left = ${numIncr}`;
-    }else{
+    }
+    else{
         clearInterval(intervIncre);
         if(totalTimeLeft >= 100) {
             priceCont.appendChild(plusLive);
@@ -832,19 +792,18 @@ function printcount(){
             priceCont.appendChild(noEnough);
             noEnough.classList.add("clnoEnough");
         };
+
+        if(stageName == "Jungle"){
+            current = "dinoInfo";
+            stageInfo = true;
+            setTimeout(statusWindowFnc, 3000);
+        }
         enableBtnsMsgs();
     }
 }
 function counting(){
     intervIncre = setInterval(printcount, 25);
 };
-
-
-
-
-
-
-
 
 
 // --- function record ---
@@ -854,7 +813,7 @@ function counting(){
 // };
 // levelMsg.innerHTML = localStorage.getItem("record");
 
-let timePlayer;
+// let timePlayer;
 // function printTime(){
 //     timePlayer = Date.now() - timeStart;
 //     timeMsg.innerHTML = timePlayer;
