@@ -29,7 +29,9 @@ const mapsImgs = {
     "Jungle4": "https://i.ibb.co/Jvvb5ZZ/Jungle-level-4.jpg",
     "Jungle5": "https://i.ibb.co/X5YmX6Q/Jungle-level-5.jpg",
 
-    "Laberinto1": "./assets/laberinto_01.jpg"
+    "Laberynth1": "./assets/Laberynth_level_1.jpg",
+    "Laberynth2": "./assets/Laberynth_level_2.jpg",
+    "Laberynth3": "./assets/Laberynth_level_3.jpg",
 };
 
 // --- banners ---
@@ -105,6 +107,7 @@ conversationImg.src = "./assets/conversation.png";
 // --- Values in windows ---
 const messagesValues = [];
 
+
 const startG = {
     "id": "startG",
     "topBanner": imgBanCaveman,
@@ -146,6 +149,22 @@ const dinoFound = {
     "bottomText": "You have found Rocko",
     "btnText": "Play Again"
 };
+const btnsValues = {
+    "A" : ["t","t","f","t"],
+    "B" : ["f","t","t","t"],
+    "C" : ["f","t","f","t"],
+    "D" : ["t","t","t","f"],
+    "E" : ["t","f","t","t"],
+    "F" : ["t","f","t","f"], 
+    "G" : ["t","t","f","f"],
+    "H" : ["f","f","t","t"],
+    "I" : ["f","t","t","f"],
+    "J" : ["t","f","f","t"],
+    "K" : ["f","f","t","f"],
+    "L" : ["t","f","f","f"],
+    "M" : ["f","f","f","t"],
+    "N" : ["f","t","f","f"]
+};
 
 messagesValues.push(startG);
 messagesValues.push(timeUp);
@@ -179,6 +198,8 @@ let stageName;
 let mapNumber = 0;
 let bgnMap;
 let collitionAreas;
+let wallsLimitsAreas;
+
 
 // ---Function to fill up Array with maps images ---
 let arrayImgMaps = [];
@@ -192,9 +213,12 @@ function loadMaps(obj){
         }
         else{
             if( name == "Laberynth") {
-                let map = new Image();
-                map.src = mapsImgs["Laberinto1"];
-                arrayMap.push(map);
+                for(let i = 1; i < 4; i++){
+                    let map = new Image();
+                    let srcInfo = mapsImgs[name + i];
+                    map.src = srcInfo;
+                    arrayMap.push(map);
+                }
             }else {
                 for(let i = 1; i < 6; i++){
                     let map = new Image();
@@ -210,10 +234,9 @@ function loadMaps(obj){
     }
 };
 loadMaps(stagesNames);
-// --- ---
 
 // --- Maps ---
-mapsInfo = {
+let mapsInfo = {
     "stageMagma":{
         "areas" : [
         //     `
@@ -600,20 +623,82 @@ mapsInfo = {
         "collitionImg" : imgFallingJungle
     },
     "stageLaberynth":{
-        "areas" : [`
-        PPPPPPPPPP
-        PPPPPPPPPP
-        PPPPPPPPPP
-        PPPPPPPPPP
-        PPPPPPPPPP
-        PPPPPPPPPP
-        PPPPPPPPPP
-        PPPPPPPPPP
-        PPPPPPPPPS
-        PPFPPPPPPP
+        "areas" : [
+        `
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPS
+            PPFPPPPPPP
+        `,
+        `
+            PPPPPPFPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPSPPPPPPP
+        `,
+        `
+            PPPPPPSPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPP
+            PPPPPPPPPF
          `],
         "caveManImg" : imgCavMan,
-        "collitionImg" : imgFallingJungle
     }
-}
+};
+let wallsLimits = {
+    "stageLaberynth": [`
+        ICBHICCCCH
+        GHFFGCHNHF
+        IJFGCHDHDJ
+        GHGCHFFFFK
+        IAMIJLFFFF
+        FIHFICJFFF
+        FFGJGHIJFF
+        FFNCCJFIAJ
+        FGCCCCJGBM
+        GCMNCCCCAM
+    `,
+    `
+        IHIHIBJIBH
+        FFFGJLIJFF
+        FFFICCAMFF
+        FFGAHNHIJG
+        FGHGACEFIH
+        FNACHNEGJF
+        DCHNAHDCMF
+        GHGHKFLIHF
+        IAMFFGHFGE
+        GMIJGCAJNJ
+    ` ,
+    `
+        ICCMIHDCCH
+        FIHIJGJICE
+        GJFFICBJKF
+        IMFFGHFIJF
+        GCAJIJLFIJ
+        IMIMGBCJFI
+        FIJICEIMGJ
+        FGCJNEDCHI
+        DCHNBJGHDJ
+        GHGCACCJGM
+    `]
+};
 

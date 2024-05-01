@@ -13,10 +13,10 @@ const up = document.querySelector("#up");
 const down = document.querySelector("#down");
 const right = document.querySelector("#right");
 const arrows = {
-    "up": 38,
-    "down": 40,
     "left": 37,
-    "right": 39
+    "up": 38,
+    "right": 39,
+    "down": 40
 };
 const timeMsg = document.querySelector(".timeSpan");
 const livesMsg = document.querySelector(".livesSpan");
@@ -70,6 +70,8 @@ let active;
 let extraTime = 0;
 let liveSet = false
 
+
+
 let btnExitWindow = document.createElement("button");
 btnExitWindow.classList.add("btnMessStyle", "btnHov");
 btnExitWindow.innerHTML =  "Exit";
@@ -83,6 +85,7 @@ let btnStatusWindowGO_TU = document.createElement("button");
 btnStatusWindowGO_TU.classList.add("btnMessStyle", "btnHov");
 btnStatusWindowGO_TU.addEventListener("click", filter_GO_TU);
 
+
 function filterHome(){
     livesMsg.innerHTML = "";
     timeMsg.innerHTML = "";
@@ -94,33 +97,39 @@ function filterHome(){
 };
 function filterStagePassed() {
     defaulValues();
-    startGame(); 
+    startGame();
 }
 function filter_GO_TU() {
     resetValuesStart();
-    startGame(); 
+    startGame();
 }
 
 
 function escuchador(evento){
     switch(evento.keyCode){
-        case arrows["up"]:
-            btnUp();
-            break;
-        case arrows["down"]:
-            btnDown();
-            break;
         case arrows["left"]:
             btnLeft();
+            break;
+        case arrows["up"]:
+            btnUp();
             break;
         case arrows["right"]:
             btnRight()
             break;
+        case arrows["down"]:
+            btnDown();
+            break;
         default:
-            console.log("Otra tecla");
+            console.log("wall");
     };
 };
 
+function defaultKeyValues(){
+    arrows["up"] = 38;
+    arrows["right"] = 39;
+    arrows["down"] = 40;
+    arrows["left"] = 37;
+}
 
 function defaulValues(){
     beginningWindow = true;
@@ -136,6 +145,7 @@ function defaulValues(){
     playerPos["y"] = undefined;
 }
 function resetValuesStart(){
+    defaultKeyValues();
     disableBtns();
     dirAreas = undefined;
     mapNumber = 0;
@@ -145,163 +155,73 @@ function resetValuesStart(){
     defaulValues();
 };
 
-
-function btnUpYnewValue(){
-    let newYposUp = Number( playerPos["y"].toFixed(1) ) - Number( elementSize.toFixed(1) );
-    playerPos["y"] = Number(newYposUp.toFixed(1));
-    levelCheck();
-    startGame();
-}
-function btnDownYnewValue(){
-    let newYposDown = Number( playerPos["y"].toFixed(1) ) +  Number( elementSize.toFixed(1) );
-    playerPos["y"] = Number (newYposDown.toFixed(1));
-    levelCheck();
-    startGame();
-}
-function btnLeftXnewValue(){
-    let newXposLeft = Number( playerPos["x"].toFixed(1)) - Number( elementSize.toFixed(1));
-    playerPos["x"] =  Number(newXposLeft.toFixed(1));
-    flip = 1;
-}
-function btnRightXnewValue(){
-    let newXposRight = Number( playerPos["x"].toFixed(1)) + Number( elementSize.toFixed(1));
-    playerPos["x"] = Number(newXposRight.toFixed(1));
-    flip = 0;
-}
 function btnUp(){
     if( !( playerPos["y"] < elementSize) ){
-        if(stageName == "Laberynth"){ 
-            let xp = playerPos["x"];
-            let yp = playerPos["y"];
-            if( !(yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize)-1 && xp < (elementSize)+1 ||
-                yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize * 5)-1 && xp < (elementSize * 8)+1 ||
-                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp > 0 -1 && xp < 0 + 1 ||
-                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
-                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
-                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp > elementSize -1 && xp < elementSize + 1 ||
-                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp >(elementSize * 3)-1 && xp < (elementSize * 4)+1 ||
-                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp >(elementSize * 9)-1 && xp < (elementSize * 9)+1 ||
-                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp > 0-1 && xp < 0 + 1 ||
-                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp >(elementSize * 2)-1 && xp < (elementSize * 3)+1 ||
-                yp > (elementSize * 5) - 1 && yp < (elementSize * 5) + 1 && xp > (elementSize) - 1 && xp < (elementSize * 2) +1 ||
-                yp > (elementSize * 5) - 1 && yp < (elementSize * 5) + 1 && xp > (elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
-                yp > (elementSize * 6) - 1 && yp < (elementSize * 6) + 1 && xp > (elementSize * 5)-1 && xp < (elementSize * 6)+1 ||
-                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 4)+1 ||
-                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
-                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 5)+1 ||
-                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize * 8)-1 && xp < (elementSize * 9)+1 ||
-                yp > (elementSize * 9) - 1 && yp < (elementSize * 9) + 1 && xp > (elementSize)-1 && xp < (elementSize * 7)+1 ||
-                yp > (elementSize * 9) - 1 && yp < (elementSize * 9) + 1 && xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1) ) {
-                    btnUpYnewValue();
-            }
-        }else{
-            btnUpYnewValue();
-        }
+        let newYposUp = Number( playerPos["y"].toFixed(1) ) - Number( elementSize.toFixed(1) );
+        playerPos["y"] = Number(newYposUp.toFixed(1));
+        levelCheck();
+        startGame();
     }
 };
 function btnDown(){
     if(!( (playerPos["y"] + elementSize) >= canvasSize ) ){
-        if(stageName == "Laberynth"){
-            let xp = playerPos["x"];
-            let yp = playerPos["y"];
-            if( !(yp > 0 - 1 && yp < 0 + 1 && xp >(elementSize)-1 && xp < (elementSize)+1 ||
-                yp > 0 - 1 && yp < 0 + 1 && xp >(elementSize * 5)-1 && xp < (elementSize * 8)+1 ||
-                yp > elementSize - 1 && yp < elementSize + 1 && xp > 0 -1 && xp < 0 + 1 ||
-                yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
-                yp > elementSize - 1 && yp < elementSize + 1 && xp >(elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
-                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp > elementSize -1 && xp < elementSize + 1 ||
-                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 3)-1 && xp < (elementSize * 4)+1 ||
-                yp > (elementSize * 2) - 1 && yp < (elementSize * 2) + 1 && xp >(elementSize * 9)-1 && xp < (elementSize * 9)+1 ||
-                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp > 0-1 && xp < 0 + 1 ||
-                yp > (elementSize * 3) - 1 && yp < (elementSize * 3) + 1 && xp >(elementSize * 2)-1 && xp < (elementSize * 3)+1 ||
-                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp > (elementSize) - 1 && xp < (elementSize * 2) + 1 ||
-                yp > (elementSize * 4) - 1 && yp < (elementSize * 4) + 1 && xp > (elementSize * 4)-1 && xp < (elementSize * 5)+1 ||
-                yp > (elementSize * 5) - 1 && yp < (elementSize * 5) + 1 && xp > (elementSize * 5)-1 && xp < (elementSize * 6)+1 ||
-                yp > (elementSize * 6) - 1 && yp < (elementSize * 6) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 4)+1 ||
-                yp > (elementSize * 6) - 1 && yp < (elementSize * 6) + 1 && xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 ||
-                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 2)-1 && xp < (elementSize * 5)+1 ||
-                yp > (elementSize * 7) - 1 && yp < (elementSize * 7) + 1 && xp > (elementSize * 8)-1 && xp < (elementSize * 9)+1 ||
-                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize)-1 && xp < (elementSize * 7)+1 ||
-                yp > (elementSize * 8) - 1 && yp < (elementSize * 8) + 1 && xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1) ) {
-                    btnDownYnewValue();
-            }
-        }else{
-            btnDownYnewValue();
-        }
-    }
-
-        // else if(!( (playerPos["y"] + elementSize) >= canvasSize ) ){
-        //     let playerDAddPosA = Number( playerPos["y"].toFixed(1));
-        //     let playerDAddPosB = Number( elementSize.toFixed(1));
-        //     let playerDAddPosC = Number( (playerDAddPosA + playerDAddPosB).toFixed(1) );
-        //     playerPos["y"] = playerDAddPosC;
-        //     levelCheck();
-        //     startGame();
-        // }
- 
-};
-function btnLeft(){
-    if( !( playerPos["x"] < elementSize) ){
-        if(stageName == "Laberynth"){
-            let xp = playerPos["x"];
-            let yp = playerPos["y"];
-            if( !(xp > elementSize -1 && xp < (elementSize)+1 && yp >(elementSize * 5)-1 && yp < (elementSize * 8)+1 ||
-                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp >(elementSize)-1 && yp < (elementSize * 3)+1 ||
-                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
-                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize)-1 && yp < (elementSize * 2)+1 ||
-                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize * 4)-1 && yp < (elementSize * 5)+1 ||
-                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize * 9)-1 && yp < (elementSize * 9)+1  ||
-                xp > (elementSize * 4)-1 && xp < (elementSize * 4)+1 && yp > (0)-1 && yp < (elementSize)+1 ||
-                xp > (elementSize * 4)-1 && xp < (elementSize * 4)+1 && yp > (elementSize * 5)-1 && yp < (elementSize * 6)+1 ||
-                xp > (elementSize * 5)-1 && xp < (elementSize * 5)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 4)+1 ||
-                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 4)+1 ||
-                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
-                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
-                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 5)+1  ||
-                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize * 7)-1 && yp < (elementSize * 8)+1  ||
-                xp > (elementSize * 8)-1 && xp < (elementSize * 8)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 6)+1 ||
-                xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
-                xp > (elementSize * 9)-1 && xp < (elementSize * 9)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 6)+1) ){
-                    btnLeftXnewValue();
-            }
-        }else{
-            btnLeftXnewValue();
-        }
+        let newYposDown = Number( playerPos["y"].toFixed(1) ) +  Number( elementSize.toFixed(1) );
+        playerPos["y"] = Number (newYposDown.toFixed(1));
         levelCheck();
         startGame();
     }
+};
+function btnLeft(){
+    if( !( playerPos["x"] < elementSize) ){
+        let newXposLeft = Number( playerPos["x"].toFixed(1)) - Number( elementSize.toFixed(1));
+        playerPos["x"] =  Number(newXposLeft.toFixed(1));
+        flip = 1;
+     }
+     levelCheck();
+     startGame();
 }
 function btnRight(){
     if( !( (playerPos["x"] + elementSize) >= canvasSize ) ){
-        if(stageName == "Laberynth"){
-            let xp = playerPos["x"];
-            let yp = playerPos["y"];
-            if( !(xp > 0 - 1 && xp < 0 + 1 && yp >(elementSize * 5)-1 && yp < (elementSize * 8)+1 ||
-                xp > (elementSize * 1)-1 && xp < (elementSize * 1)+1 && yp >(elementSize)-1 && yp < (elementSize * 3)+1 ||
-                xp > (elementSize * 1)-1 && xp < (elementSize * 1)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
-                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize)-1 && yp < (elementSize * 2)+1 ||
-                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize * 4)-1 && yp < (elementSize * 5)+1 ||
-                xp > (elementSize * 2)-1 && xp < (elementSize * 2)+1 && yp > (elementSize * 9)-1 && yp < (elementSize * 9)+1  ||
-                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (0)-1 && yp < (elementSize)+1  ||
-                xp > (elementSize * 3)-1 && xp < (elementSize * 3)+1 && yp > (elementSize * 5)-1 && yp < (elementSize * 6)+1 ||
-                xp > (elementSize * 4)-1 && xp < (elementSize * 4)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 4)+1 ||
-                xp > (elementSize * 5)-1 && xp < (elementSize * 5)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 4)+1 ||
-                xp > (elementSize * 5)-1 && xp < (elementSize * 5)+1 && yp > (elementSize * 6)-1 && yp < (elementSize * 7)+1 ||
-                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
-                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 5)+1  ||
-                xp > (elementSize * 6)-1 && xp < (elementSize * 6)+1 && yp > (elementSize * 7)-1 && yp < (elementSize * 8)+1  ||
-                xp > (elementSize * 7)-1 && xp < (elementSize * 7)+1 && yp > (elementSize * 2)-1 && yp < (elementSize * 6)+1 ||
-                xp > (elementSize * 8)-1 && xp < (elementSize * 8)+1 && yp > (elementSize)-1 && yp < (elementSize)+1 ||
-                xp > (elementSize * 8)-1 && xp < (elementSize * 8)+1 && yp > (elementSize * 3)-1 && yp < (elementSize * 6)+1 ) ) {
-                    btnRightXnewValue();
-            }
-        }else{
-            btnRightXnewValue();
-        }
+        let newXposRight = Number( playerPos["x"].toFixed(1)) + Number( elementSize.toFixed(1));
+        playerPos["x"] = Number(newXposRight.toFixed(1));
+        flip = 0;
     }
     levelCheck();
     startGame();
 };
+
+
+function wallCheck(array){
+    if(array[0] == "t"){
+        arrows["up"] = 38;
+        up.addEventListener("click", btnUp);
+    }else{
+        arrows["up"] = 0;
+        up.removeEventListener("click", btnUp);
+    }
+    if(array[1] == "t"){
+        arrows["right"] = 39;
+        right.addEventListener("click", btnRight);
+    }else{
+        arrows["right"] = 0;
+        right.removeEventListener("click", btnRight);
+    }
+    if(array[2] == "t"){ 
+        arrows["down"] = 40;
+        down.addEventListener("click", btnDown);
+    }else{
+        arrows["down"] = 0;
+        down.removeEventListener("click", btnDown);
+    }
+    if(array[3] == "t"){
+        arrows["left"] = 37;
+        left.addEventListener("click", btnLeft);
+    }else{
+        arrows["left"] = 0;
+        left.removeEventListener("click", btnLeft);
+    }
+};
+
 
 function levelCheck(){
     const caveX = firePos["xC"] == playerPos["x"];
@@ -370,6 +290,8 @@ function beginningFilter(){
         startGame();
     }
 };
+
+
 function startGame() {
     stageName = stagesNames[stCount];
     let lenghtMapArray = arrayImgMaps[stCount][stageName];
@@ -380,7 +302,21 @@ function startGame() {
     };
     dirAreas = stages[stCount];
     bgnMap = lenghtMapArray[mapNumber];
+    // ------------------------------------------------------------
+    let wallTrim;
+    let wallRowCol;
+
+    if(dirAreas == "stageLaberynth"){
+        wallsLimitsAreas = wallsLimits[dirAreas][mapNumber];
+        wallTrim = wallsLimitsAreas.trim().split("\n");
+        wallRowCol = wallTrim.map((row) => row.trim().split(""));
+    }
+    // ------------------------------------------------------------
+
     collitionAreas = mapsInfo[dirAreas]["areas"][mapNumber];
+    let mapTrim = collitionAreas.trim().split("\n");
+    let mapRowCol = mapTrim.map((row) => row.trim().split(""));
+
     beginningWindow = false;
     recordPos = true;
     winMessage.classList.add("winOff");
@@ -388,14 +324,11 @@ function startGame() {
     btns.classList.remove("winOff");
     enableBtns();
 
-    const mapTrim = collitionAreas.trim().split("\n");
-    const mapRowCol = mapTrim.map((row) => row.trim().split(""));
-    
     if(!timeStart){
         timeStart = true;
         startTimer();
     };
-   
+
     printLives();
     printLevel();
 
@@ -404,6 +337,7 @@ function startGame() {
 
     for(let row = 0; row < 10; row++){
         for(let col = 0; col < 10; col++){
+
             // --- posicion X ---
             let posXM = Number((elementSize * col).toFixed(1));
             let posX = posXM;
@@ -420,17 +354,25 @@ function startGame() {
                     y: posY
                 })
             };
-            // --- Posicion fuego salida ---
+            // --- Posicion finish salida ---
             if( item == "F"){
                 firePos["xC"] = posX;
                 firePos["yC"] = posY;
             }
-            // --- Posicion Jugador  y cueva cuando es undefinded ---
+            // --- Posiition  Jugador  y Start when undefinded ---
             if( item == "S"){
                 if(playerPos["x"] == undefined && playerPos["y"] == undefined){
                     playerPos["x"] = Number(posX.toFixed(1));
                     playerPos["y"] = Number(posY.toFixed(1));
                 };
+            }
+            // -- limit wall position letter --
+            if(dirAreas == "stageLaberynth"){
+                if(playerPos["x"] == posX && playerPos["y"] == posY){
+                    let itemW = wallRowCol[row][col];
+                    let arrayValue = btnsValues[itemW];
+                    wallCheck(arrayValue);
+                }
             }
         }
     }
@@ -502,6 +444,7 @@ function enableBtnsMsgs(){
     btnExitWindow.classList.add("btnHov");
     btnStatusWindow.classList.add("btnHov");
 };
+
 
 
 function printLives(){
@@ -622,7 +565,7 @@ function statusWindowFnc(){
 
     winMessage.innerHTML = "";
     const active = messagesValues.find(opc => opc["id"] == current);
-    
+
     const bannerStatusWindow = document.createElement("div");
     bannerStatusWindow.classList.add("clTop");
     bannerStatusWindow.append(active["topBanner"]);
@@ -680,14 +623,14 @@ function levelPassWindow(){
 
         if(objSeconds[i] >= 20 && objSeconds[i] <= 40){
             spanVar.classList.add("greenStyle");
-        }  
+        }
         else if(objSeconds[i] >= 10 && objSeconds[i] < 20){
             spanVar.classList.add("yellowStyle");
         }
         else if(objSeconds[i] > 0 && objSeconds[i] < 10){
             spanVar.classList.add("redStyle");
         };
-        
+
         spanVar.innerHTML = Number(objSeconds[i]) ;
         totalTimeLeft += Number(objSeconds[i])
 
@@ -745,7 +688,7 @@ function imprTimeTimer(){
 function couterColor(){
     if(counter >= 20 && counter <= 40){
         document.documentElement.style.setProperty("--colorChange", "#04d112");
-    }  
+    }
     else if(counter >= 10 && counter < 20){
         document.documentElement.style.setProperty("--colorChange", "#ffff00");
     }
