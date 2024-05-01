@@ -1,108 +1,107 @@
 const mapsImgs = {
-    "Magma1": "https://i.ibb.co/ngd2xcp/Magma-level-1.jpg",
-    "Magma2": "https://i.ibb.co/G9SbBQB/Magma-level-2.jpg",
-    "Magma3": "https://i.ibb.co/WVnt62j/Magma-level-3.jpg",
-    "Magma4": "https://i.ibb.co/tsJrVXz/Magma-level-4.jpg",
-    "Magma5": "https://i.ibb.co/Qn9Qq7J/Magma-level-5.jpg",
+    "Magma1": "https://i.ibb.co/vXwTGMK/Magma-level-1.jpg",
+    "Magma2": "https://i.ibb.co/YLK0Gb3/Magma-level-2.jpg",
+    "Magma3": "https://i.ibb.co/q77HQkG/Magma-level-3.jpg",
+    "Magma4": "https://i.ibb.co/Rh46Rg1/Magma-level-4.jpg",
+    "Magma5": "https://i.ibb.co/Jx756Rj/Magma-level-5.jpg",
 
-    "Water1": "https://i.ibb.co/NNX6hRR/Water-level-1.jpg",
-    "Water2": "https://i.ibb.co/g9pYLfC/Water-level-2.jpg",
-    "Water3": "https://i.ibb.co/8M7y09w/Water-level-3.jpg",
-    "Water4": "https://i.ibb.co/CBXk9sb/Water-level-4.jpg",
-    "Water5": "https://i.ibb.co/ySLXyVr/Water-level-5.jpg",
+    "Water1": "https://i.ibb.co/T21LWXm/Water-level-1.jpg",
+    "Water2": "https://i.ibb.co/GsF5bBr/Water-level-2.jpg",
+    "Water3": "https://i.ibb.co/1vTgtgG/Water-level-3.jpg",
+    "Water4": "https://i.ibb.co/TYT8DKY/Water-level-4.jpg",
+    "Water5": "https://i.ibb.co/tMPhRcY/Water-level-5.jpg",
 
-    "Snow1": "https://i.ibb.co/d7WrNvc/Snow-level-1.jpg",
-    "Snow2": "https://i.ibb.co/kHW4N32/Snow-level-2.jpg",
-    "Snow3": "https://i.ibb.co/8cJDK60/Snow-level-3.jpg",
-    "Snow4": "https://i.ibb.co/fQtbDHM/Snow-level-4.jpg",
-    "Snow5": "https://i.ibb.co/qdqgJpM/Snow-level-5.jpg",
+    "Snow1": "https://i.ibb.co/nsV2y9g/Snow-level-1.jpg",
+    "Snow2": "https://i.ibb.co/x582jGP/Snow-level-2.jpg",
+    "Snow3": "https://i.ibb.co/yWyVngQ/Snow-level-3.jpg",
+    "Snow4": "https://i.ibb.co/FDQQWXc/Snow-level-4.jpg",
+    "Snow5": "https://i.ibb.co/K9csqcD/Snow-level-5.jpg",
 
-    "Sand1": "https://i.ibb.co/bHKbs9X/Sand-level-1.jpg",
-    "Sand2": "https://i.ibb.co/cD752Kn/Sand-level-2.jpg",
-    "Sand3": "https://i.ibb.co/717CyRX/Sand-level-3.jpg",
-    "Sand4": "https://i.ibb.co/crH5BhB/Sand-level-4.jpg",
-    "Sand5": "https://i.ibb.co/p2g2b4P/Sand-level-5.jpg",
+    "Sand1": "https://i.ibb.co/QCn0Lqk/Sand-level-1.jpg",
+    "Sand2": "https://i.ibb.co/BGg2WFT/Sand-level-2.jpg",
+    "Sand3": "https://i.ibb.co/nBHvfLF/Sand-level-3.jpg",
+    "Sand4": "https://i.ibb.co/zNnTFWq/Sand-level-4.jpg",
+    "Sand5": "https://i.ibb.co/N7C4n4Z/Sand-level-5.jpg",
 
-    "Jungle1": "https://i.ibb.co/r4Jxn9d/Jungle-level-1.jpg",
-    "Jungle2": "https://i.ibb.co/RBXbw1d/Jungle-level-2.jpg",
-    "Jungle3": "https://i.ibb.co/m0fPwL3/Jungle-level-3.jpg",
-    "Jungle4": "https://i.ibb.co/Jvvb5ZZ/Jungle-level-4.jpg",
-    "Jungle5": "https://i.ibb.co/X5YmX6Q/Jungle-level-5.jpg",
+    "Jungle1": "https://i.ibb.co/GxhNHyw/Jungle-level-1.jpg",
+    "Jungle2": "https://i.ibb.co/1XmdLVC/Jungle-level-2.jpg",
+    "Jungle3": "https://i.ibb.co/3hZRJnT/Jungle-level-3.jpg",
+    "Jungle4": "https://i.ibb.co/ZM7ngV6/Jungle-level-4.jpg",
+    "Jungle5": "https://i.ibb.co/nBpdKHg/Jungle-level-5.jpg",
 
-    "Laberynth1": "./assets/Laberynth_level_1.jpg",
-    "Laberynth2": "./assets/Laberynth_level_2.jpg",
-    "Laberynth3": "./assets/Laberynth_level_3.jpg",
+    "Laberynth1": "https://i.ibb.co/RYNQ9QP/Laberynth-level-1.jpg",
+    "Laberynth2": "https://i.ibb.co/Yh6hDbG/Laberynth-level-2.jpg",
+    "Laberynth3": "https://i.ibb.co/b6r5K7W/Laberynth-level-3.jpg",
 };
 
 // --- banners ---
 let imgBanCaveman = new Image();
-imgBanCaveman.src = "./assets/banner-start.png";
+imgBanCaveman.src = "https://i.ibb.co/7NqLC7M/banner-start.png";
 let imgBanTimeUP = new Image();
-imgBanTimeUP.src = "./assets/banner-time-up.png";
+imgBanTimeUP.src = "https://i.ibb.co/54hFyjG/banner-time-up.png";
 let imgBanGameOver = new Image();
-imgBanGameOver.src = "./assets/banner-game-over.png";
+imgBanGameOver.src = "https://i.ibb.co/QY75t86/banner-game-over.png";
 let imgBanStageComp = new Image();
-imgBanStageComp.src = "./assets/banner-levels-done.png";
+imgBanStageComp.src = "https://i.ibb.co/51tBp8j/banner-levels-done.png";
 let imgBanStagesComp = new Image();
-imgBanStagesComp.src = "./assets/banner-stage-done.png";
+imgBanStagesComp.src = "https://i.ibb.co/DtZthcQ/banner-stage-done.png";
 let imgBanPetFound = new Image();
-imgBanPetFound.src = "./assets/banner-pet-found.png";
+imgBanPetFound.src = "https://i.ibb.co/fvPWqnw/banner-pet-found.png";
 
 // --- caveman status ---
 let imgStartG = new Image();
-imgStartG.src = "./assets/start-shell.png";
-let imgGameOver = new Image();
-imgGameOver.src = "./assets/game-over.png";
-let imgTime = new Image();
-imgTime.src = "./assets/time-up.png";
-
-
+imgStartG.src = "https://i.ibb.co/GFrTR8m/start-shell.png";
 let imgInfo = new Image();
-imgInfo.src = "./assets/pet-info-dino.png";
+imgInfo.src = "https://i.ibb.co/Vpmf489/pet-info-dino.png";
 let imgFound = new Image();
-imgFound.src = "./assets/pet-found-dino.png";
+imgFound.src = "https://i.ibb.co/s9z2V2z/pet-found-dino.png";
+
+let imgGameOver = new Image();
+imgGameOver.src = "https://i.ibb.co/j8QjJ42/game-over.png";
+let imgTime = new Image();
+imgTime.src = "https://i.ibb.co/8DWQMCD/time-up.png";
 
 // --- Caveman ----
 // --- Walk ---
 let imgCavMan = new Image();
-imgCavMan.src = "./assets/walk.png";
+imgCavMan.src = "https://i.ibb.co/KK4Gdt3/walk.png";
 
 
 // --- falling ---
 // --- fire ---
 let imgFallingFire = new Image();
-imgFallingFire.src = "https://i.ibb.co/M5bb0Qc/falling-fire.png";
+imgFallingFire.src = "https://i.ibb.co/fdHj0y7/falling-fire.png";
 // --- water ---
 let imgFallingWater = new Image();
-imgFallingWater.src = "https://i.ibb.co/JdQ55wB/falling-water.png";
+imgFallingWater.src = "https://i.ibb.co/LRj9Kp1/falling-water.png";
 // --- snow ---
 let imgFallingSnow = new Image();
-imgFallingSnow.src = "https://i.ibb.co/F7Xxhh2/falling-snow.png";
+imgFallingSnow.src = "https://i.ibb.co/dLbHXtc/falling-snow.png";
 // --- sand ---
 let imgFallingSand = new Image();
-imgFallingSand.src = "https://i.ibb.co/xjTKfy4/falling-sand.png";
+imgFallingSand.src = "https://i.ibb.co/k0bqWK6/falling-sand.png";
 // --- jungle ---
 let imgFallingJungle = new Image();
-imgFallingJungle.src = "https://i.ibb.co/XyKK2Hn/falling-jungle.png";
+imgFallingJungle.src = "https://i.ibb.co/fkyc9qJ/falling-jungle.png";
 
 // --- valuies Imgs ---
 const plusLive = new Image();
-plusLive.src = "./assets/1up.png";
+plusLive.src = "https://i.ibb.co/y65wN4s/1up.png";
 const plusSeconds = new Image();
-plusSeconds.src = "./assets/10sec.png";
+plusSeconds.src = "https://i.ibb.co/WWDKTvw/10sec.png";
 const noEnough = new Image();
-noEnough.src = "./assets/no_enough.png";
+noEnough.src = "https://i.ibb.co/jwTQTGj/no-enough.png";
 
 // --- icon live img ---
-const iconLive = "./assets/icon-live.png";
+const iconLive = "https://i.ibb.co/sK8dhb6/icon-live.png";
 
 // --- btns imgs ---
-const inactiveBtnPad = "./assets/upDissabled.png";
-const activeBtnPad = "./assets/up.png";
+const inactiveBtnPad = "https://i.ibb.co/5B6PGpB/up-Dissabled.png";
+const activeBtnPad = "https://i.ibb.co/f02frFs/up.png";
 
 // --- conversation imgs ---
 const conversationImg = new Image();
-conversationImg.src = "./assets/conversation.png";
+conversationImg.src = "https://i.ibb.co/znwrRzK/conversation.png";
 
 // --- Values in windows ---
 const messagesValues = [];
