@@ -112,7 +112,7 @@ const startG = {
     "id": "startG",
     "topBanner": imgBanCaveman,
     "middleImg": imgStartG,
-    "hisText": "Help Link to find his friendly pet Titan.",
+    "hisText": "Help Link to find his friendly pet Rocko.",
     "bottomText": "Press Start To Play",
 };
 const timeUp = {
