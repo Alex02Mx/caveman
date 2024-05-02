@@ -57,7 +57,7 @@ let dirAreas = undefined;
 let stageName;
 let mapNumber = 0;
 let bgnMap;
-let collitionAreas;
+let collisionAreas;
 let wallsLimitsAreas;
 
 // --- banners ---
@@ -96,19 +96,19 @@ imgCavMan.src = "https://i.ibb.co/wRk3fdQ/walk.png";
 // --- falling ---
 // --- fire ---
 let imgFallingFire = new Image();
-imgFallingFire.src = "https://i.ibb.co/F42Nwqj/falling-fire.png";
+imgFallingFire.src = "https://i.ibb.co/1dm7LgJ/falling-fire.png";
 // --- water ---
 let imgFallingWater = new Image();
-imgFallingWater.src = "https://i.ibb.co/4NZFh0s/falling-water.png";
+imgFallingWater.src = "https://i.ibb.co/BzJ7YqQ/falling-water.png";
 // --- Ice ---
 let imgFallingIce = new Image();
-imgFallingIce.src = "https://i.ibb.co/LRMRKWW/falling-snow.png";
+imgFallingIce.src = "https://i.ibb.co/gZ30CJ8/falling-ice.png";
 // --- sand ---
 let imgFallingSand = new Image();
-imgFallingSand.src = "https://i.ibb.co/0VLKsxm/falling-sand.png";
+imgFallingSand.src = "https://i.ibb.co/MRhc0qY/falling-sand.png";
 // --- jungle ---
 let imgFallingJungle = new Image();
-imgFallingJungle.src = "https://i.ibb.co/DkNWS7j/falling-jungle.png";
+imgFallingJungle.src = "https://i.ibb.co/93vprCR/falling-jungle.png";
 
 // --- valuies Imgs ---
 const plusLive = new Image();

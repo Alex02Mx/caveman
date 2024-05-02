@@ -311,8 +311,8 @@ function startGame() {
     }
     // ------------------------------------------------------------
 
-    collitionAreas = mapsInfo[dirAreas]["areas"][mapNumber];
-    let mapTrim = collitionAreas.trim().split("\n");
+    collisionAreas = mapsInfo[dirAreas]["areas"][mapNumber];
+    let mapTrim = collisionAreas.trim().split("\n");
     let mapRowCol = mapTrim.map((row) => row.trim().split(""));
 
     beginningWindow = false;
@@ -345,7 +345,7 @@ function startGame() {
             // --- Item letra directorio mapa---
             let item = mapRowCol[row][col];
 
-            // --- Posiciones en colision
+            // --- Posiciones en collision
             if( item == "C"){
                 arrayObst.push({
                     x: posX,
@@ -378,12 +378,12 @@ function startGame() {
     movePlayer();
 };
 function movePlayer() {
-    const colisionRoca = arrayObst.find((pos)=> {
-        const colisionX = pos["x"] == playerPos["x"];
-        const colisionY = pos["y"] == playerPos["y"];
-        return colisionX && colisionY;
+    const collisionRock = arrayObst.find((pos)=> {
+        const collisionX = pos["x"] == playerPos["x"];
+        const collisionY = pos["y"] == playerPos["y"];
+        return collisionX && collisionY;
     })
-    if(colisionRoca){
+    if(collisionRock){
         lives--;
         printLives();
         if(lives == 0){
