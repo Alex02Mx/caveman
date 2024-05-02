@@ -62,6 +62,7 @@ body{
     gap: 10px;
 }
 .msgsTop p {
+    filter: drop-shadow(1px 1px 1px black);
     font-size: 18px;
     font-weight: bold;
     color: var(--darkOrange);
@@ -78,7 +79,6 @@ body{
     align-items: center;
 }
 .livesSpan {
-    filter: drop-shadow(0 1px 1px black);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -88,17 +88,10 @@ span {
     color: var(--white);
 }
 .timeSpan {
-    filter: drop-shadow(0 1px 1px black);
     font-size: 20px;
     font-weight: bold;
     color: var(--colorChange);
 }
-.stageSpan,
-.levelSpan {
-    filter: drop-shadow(0 1px 1px black);
-
-}
-
 canvas{
     box-sizing: border-box;
     background-color: var(--brown);
@@ -165,12 +158,11 @@ canvas{
     border: none;
 }
 .btnStd:active,
-.btnHov:active {
+.btnHov:hover {
     border: 1px solid var(--black);
     background-color: var(--darkOrange);
     color: var(--black);
     cursor: pointer;
-  
 }
 .winMessage {
     display: flex;
@@ -211,7 +203,7 @@ canvas{
     font-weight: bold;
 }
 .contLevelsResult {
-    filter: drop-shadow(0 1px 1px black);
+    filter: drop-shadow(1px 1px 1px black);
     width: auto;
     height: 125px;
     display: flex;

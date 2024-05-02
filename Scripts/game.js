@@ -143,7 +143,6 @@ function escuchador(evento){
             btnDown();
             break;
         default:
-            console.log("wall");
     };
 };
 function defaultKeyValues(){
@@ -492,7 +491,7 @@ function levelDone(){
     winMessage.classList.remove("winOff");
     disableBtns();
 
-    if(dirAreas == "stageMagma" || dirAreas == "stageWater" || dirAreas == "stageSnow" || dirAreas == "stageSand" || dirAreas == "stageJungle"){
+    if(dirAreas == "stageMagma" || dirAreas == "stageWater" || dirAreas == "stageIce" || dirAreas == "stageSand" || dirAreas == "stageJungle"){
         mapNumber = 0;
         level = 1;
         stCount++;

@@ -1,43 +1,43 @@
 const mapsImgs = {
-    "Magma1": "https://i.ibb.co/vXwTGMK/Magma-level-1.jpg",
-    "Magma2": "https://i.ibb.co/YLK0Gb3/Magma-level-2.jpg",
-    "Magma3": "https://i.ibb.co/q77HQkG/Magma-level-3.jpg",
-    "Magma4": "https://i.ibb.co/Rh46Rg1/Magma-level-4.jpg",
-    "Magma5": "https://i.ibb.co/Jx756Rj/Magma-level-5.jpg",
+    "Magma1": "https://i.ibb.co/HzZK1vt/Magma-level-1.jpg",
+    "Magma2": "https://i.ibb.co/cLJLh52/Magma-level-2.jpg",
+    "Magma3": "https://i.ibb.co/2PTtGSV/Magma-level-3.jpg",
+    "Magma4": "https://i.ibb.co/wWwS4YF/Magma-level-4.jpg",
+    "Magma5": "https://i.ibb.co/6yXgCqZ/Magma-level-5.jpg",
 
-    "Water1": "https://i.ibb.co/T21LWXm/Water-level-1.jpg",
-    "Water2": "https://i.ibb.co/GsF5bBr/Water-level-2.jpg",
-    "Water3": "https://i.ibb.co/1vTgtgG/Water-level-3.jpg",
-    "Water4": "https://i.ibb.co/TYT8DKY/Water-level-4.jpg",
-    "Water5": "https://i.ibb.co/tMPhRcY/Water-level-5.jpg",
+    "Water1": "https://i.ibb.co/r0Wr1pp/Water-level-1.jpg",
+    "Water2": "https://i.ibb.co/kc8hGYn/Water-level-2.jpg",
+    "Water3": "https://i.ibb.co/HHTZmYQ/Water-level-3.jpg",
+    "Water4": "https://i.ibb.co/YpnNg6Y/Water-level-4.jpg",
+    "Water5": "https://i.ibb.co/x3GPGtR/Water-level-5.jpg",
 
-    "Snow1": "https://i.ibb.co/nsV2y9g/Snow-level-1.jpg",
-    "Snow2": "https://i.ibb.co/x582jGP/Snow-level-2.jpg",
-    "Snow3": "https://i.ibb.co/yWyVngQ/Snow-level-3.jpg",
-    "Snow4": "https://i.ibb.co/FDQQWXc/Snow-level-4.jpg",
-    "Snow5": "https://i.ibb.co/K9csqcD/Snow-level-5.jpg",
+    "Ice1": "https://i.ibb.co/RC3VWJm/Ice-level-1.jpg",
+    "Ice2": "https://i.ibb.co/xjBLk9v/Ice-level-2.jpg",
+    "Ice3": "https://i.ibb.co/bvCdK1s/Ice-level-3.jpg",
+    "Ice4": "https://i.ibb.co/Q81RdM9/Ice-level-4.jpg",
+    "Ice5": "https://i.ibb.co/NZP1tcV/Ice-level-5.jpg",
 
-    "Sand1": "https://i.ibb.co/QCn0Lqk/Sand-level-1.jpg",
-    "Sand2": "https://i.ibb.co/BGg2WFT/Sand-level-2.jpg",
-    "Sand3": "https://i.ibb.co/nBHvfLF/Sand-level-3.jpg",
-    "Sand4": "https://i.ibb.co/zNnTFWq/Sand-level-4.jpg",
+    "Sand1": "https://i.ibb.co/2M6Bk4G/Sand-level-1.jpg",
+    "Sand2": "https://i.ibb.co/MCDsR0C/Sand-level-2.jpg",
+    "Sand3": "https://i.ibb.co/fS057Wd/Sand-level-3.jpg",
+    "Sand4": "https://i.ibb.co/Z1bg7yp/Sand-level-4.jpg",
     "Sand5": "https://i.ibb.co/N7C4n4Z/Sand-level-5.jpg",
 
-    "Jungle1": "https://i.ibb.co/GxhNHyw/Jungle-level-1.jpg",
-    "Jungle2": "https://i.ibb.co/1XmdLVC/Jungle-level-2.jpg",
-    "Jungle3": "https://i.ibb.co/3hZRJnT/Jungle-level-3.jpg",
-    "Jungle4": "https://i.ibb.co/ZM7ngV6/Jungle-level-4.jpg",
-    "Jungle5": "https://i.ibb.co/nBpdKHg/Jungle-level-5.jpg",
+    "Jungle1": "https://i.ibb.co/chRVztj/Jungle-level-1.jpg",
+    "Jungle2": "https://i.ibb.co/17K4q3W/Jungle-level-2.jpg",
+    "Jungle3": "https://i.ibb.co/4jNGXZD/Jungle-level-3.jpg",
+    "Jungle4": "https://i.ibb.co/hsfvMv1/Jungle-level-4.jpg",
+    "Jungle5": "https://i.ibb.co/3fPcgjW/Jungle-level-5.jpg",
 
-    "Laberynth1": "https://i.ibb.co/RYNQ9QP/Laberynth-level-1.jpg",
-    "Laberynth2": "https://i.ibb.co/Yh6hDbG/Laberynth-level-2.jpg",
-    "Laberynth3": "https://i.ibb.co/b6r5K7W/Laberynth-level-3.jpg",
+    "Laberynth1": "https://i.ibb.co/C6d5Cm6/Laberynth-level-1.jpg",
+    "Laberynth2": "https://i.ibb.co/Yk7fm4v/Laberynth-level-2.jpg",
+    "Laberynth3": "https://i.ibb.co/N9DFT01/Laberynth-level-3.jpg",
 };
 
 const stages = {
     0 : "stageMagma",
     1 : "stageWater",
-    2 : "stageSnow",
+    2 : "stageIce",
     3 : "stageSand",
     4 : "stageJungle",
     5 : "stageLaberynth",
@@ -46,7 +46,7 @@ const stages = {
 const stagesNames = {
     0 : "Magma",
     1 : "Water",
-    2 : "Snow",
+    2 : "Ice",
     3 : "Sand",
     4 : "Jungle",
     5 : "Laberynth",
@@ -62,72 +62,72 @@ let wallsLimitsAreas;
 
 // --- banners ---
 let imgBanCaveman = new Image();
-imgBanCaveman.src = "https://i.ibb.co/7NqLC7M/banner-start.png";
+imgBanCaveman.src = "https://i.ibb.co/n6vYnct/banner-start.png";
 let imgBanTimeUP = new Image();
-imgBanTimeUP.src = "https://i.ibb.co/54hFyjG/banner-time-up.png";
+imgBanTimeUP.src = "https://i.ibb.co/bXNjz7B/banner-time-up.png";
 let imgBanGameOver = new Image();
-imgBanGameOver.src = "https://i.ibb.co/QY75t86/banner-game-over.png";
+imgBanGameOver.src = "https://i.ibb.co/0C7TfC6/banner-game-over.png";
 let imgBanStageComp = new Image();
-imgBanStageComp.src = "https://i.ibb.co/51tBp8j/banner-levels-done.png";
+imgBanStageComp.src = "https://i.ibb.co/RgBTW31/banner-levels-done.png";
 let imgBanStagesComp = new Image();
-imgBanStagesComp.src = "https://i.ibb.co/DtZthcQ/banner-stage-done.png";
+imgBanStagesComp.src = "https://i.ibb.co/JK2QNtP/banner-stage-done.png";
 let imgBanPetFound = new Image();
-imgBanPetFound.src = "https://i.ibb.co/fvPWqnw/banner-pet-found.png";
+imgBanPetFound.src = "https://i.ibb.co/bzZxJwy/banner-pet-found.png";
 
 // --- caveman status ---
 let imgStartG = new Image();
-imgStartG.src = "https://i.ibb.co/GFrTR8m/start-shell.png";
+imgStartG.src = "https://i.ibb.co/GsYSjWq/start-shell.png";
 let imgInfo = new Image();
-imgInfo.src = "https://i.ibb.co/Vpmf489/pet-info-dino.png";
+imgInfo.src = "https://i.ibb.co/xMbmNK3/pet-info-dino.png";
 let imgFound = new Image();
-imgFound.src = "https://i.ibb.co/s9z2V2z/pet-found-dino.png";
+imgFound.src = "https://i.ibb.co/pnYZnqC/pet-found-dino.png";
 
 let imgGameOver = new Image();
-imgGameOver.src = "https://i.ibb.co/j8QjJ42/game-over.png";
+imgGameOver.src = "https://i.ibb.co/0Kg9Xj3/game-over.png";
 let imgTime = new Image();
-imgTime.src = "https://i.ibb.co/8DWQMCD/time-up.png";
+imgTime.src = "https://i.ibb.co/DbYcDH5/time-up.png";
 
 // --- Caveman ----
 // --- Walk ---
 let imgCavMan = new Image();
-imgCavMan.src = "https://i.ibb.co/KK4Gdt3/walk.png";
+imgCavMan.src = "https://i.ibb.co/wRk3fdQ/walk.png";
 
 
 // --- falling ---
 // --- fire ---
 let imgFallingFire = new Image();
-imgFallingFire.src = "https://i.ibb.co/fdHj0y7/falling-fire.png";
+imgFallingFire.src = "https://i.ibb.co/F42Nwqj/falling-fire.png";
 // --- water ---
 let imgFallingWater = new Image();
-imgFallingWater.src = "https://i.ibb.co/LRj9Kp1/falling-water.png";
-// --- snow ---
-let imgFallingSnow = new Image();
-imgFallingSnow.src = "https://i.ibb.co/dLbHXtc/falling-snow.png";
+imgFallingWater.src = "https://i.ibb.co/4NZFh0s/falling-water.png";
+// --- Ice ---
+let imgFallingIce = new Image();
+imgFallingIce.src = "https://i.ibb.co/LRMRKWW/falling-snow.png";
 // --- sand ---
 let imgFallingSand = new Image();
-imgFallingSand.src = "https://i.ibb.co/k0bqWK6/falling-sand.png";
+imgFallingSand.src = "https://i.ibb.co/0VLKsxm/falling-sand.png";
 // --- jungle ---
 let imgFallingJungle = new Image();
-imgFallingJungle.src = "https://i.ibb.co/fkyc9qJ/falling-jungle.png";
+imgFallingJungle.src = "https://i.ibb.co/DkNWS7j/falling-jungle.png";
 
 // --- valuies Imgs ---
 const plusLive = new Image();
-plusLive.src = "https://i.ibb.co/y65wN4s/1up.png";
+plusLive.src = "https://i.ibb.co/X4ht7cf/1up.png";
 const plusSeconds = new Image();
-plusSeconds.src = "https://i.ibb.co/WWDKTvw/10sec.png";
+plusSeconds.src = "https://i.ibb.co/f2180Gy/10sec.png";
 const noEnough = new Image();
-noEnough.src = "https://i.ibb.co/jwTQTGj/no-enough.png";
+noEnough.src = "https://i.ibb.co/jyWZfv6/no-enough.png";
 
 // --- icon live img ---
-const iconLive = "https://i.ibb.co/sK8dhb6/icon-live.png";
+const iconLive = "https://i.ibb.co/8NL6r1D/icon-live.png";
 
 // --- btns imgs ---
-const inactiveBtnPad = "https://i.ibb.co/5B6PGpB/up-Dissabled.png";
-const activeBtnPad = "https://i.ibb.co/f02frFs/up.png";
+const inactiveBtnPad = "https://i.ibb.co/Byq15D6/up-Dissabled.png";
+const activeBtnPad = "https://i.ibb.co/PY45yR5/up.png";
 
 // --- conversation imgs ---
 const conversationImg = new Image();
-conversationImg.src = "https://i.ibb.co/znwrRzK/conversation.png";
+conversationImg.src = "https://i.ibb.co/5Kr6p9v/conversation.png";
 
 // -- buttons Values -- 
 const btnsValues = {
@@ -388,7 +388,7 @@ let mapsInfo = {
         "caveManImg" : imgCavMan,
         "collitionImg" : imgFallingWater
     },
-    "stageSnow":{
+    "stageIce":{
         "areas" : [
         //     `
         //     PPPPPPPPPP
@@ -463,7 +463,7 @@ let mapsInfo = {
             PPPPPPPCFP
             `],
         "caveManImg" : imgCavMan,
-        "collitionImg" : imgFallingSnow
+        "collitionImg" : imgFallingIce
     },
     "stageSand":{
         "areas" : [
