@@ -1,40 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
-.roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .roboto-medium {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-  
-  .roboto-bold {
-    font-family: "Roboto", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .roboto-black {
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
+
 :root{
+    /* Font styles */
+    --roboto: "Roboto", sans-serif;
+    --regular: 400;
+    --medium: 500;
+    --bold: 700;
+    --black: 900;
+    --style: normal;
+
+    /* Colors */
     --darkBrown: rgb(59, 36, 0);
-    --brown:  rgb(110, 78, 15);
+    --brown:  rgb(50, 32, 1);
     --black:  rgb(0, 0, 0);
-    --yellow: rgb(225, 237, 1);
     --white: white;
     --grey: rgba(120, 117, 117, 0.508);
     --darkGrey: rgb(179, 173, 173);
-    --blue: rgb(12, 134, 215);
-    --black: rgb(0, 0, 0);
     --orange: orange;
     --darkOrange: rgb(255, 149, 0);
-    --fire: rgb(0, 0, 0);
     --colorChange: #04d112;
 }
 body{
@@ -42,12 +25,11 @@ body{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    background-color: #322001;
-    /* background-color: var(--brown); */
+    background-color: var(--brown);
     /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-style: normal;
+    font-family: var(--roboto);
+    font-weight: var(--medium);
+    font-style: var(--style);
 }
 .game_container {
     display: grid;
@@ -182,12 +164,13 @@ canvas{
     border-radius: 8px;
     border: none;
 }
-.btnStd:hover,
-.btnHov:hover {
+.btnStd:active,
+.btnHov:active {
     border: 1px solid var(--black);
     background-color: var(--darkOrange);
     color: var(--black);
     cursor: pointer;
+  
 }
 .winMessage {
     display: flex;

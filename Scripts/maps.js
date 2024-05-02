@@ -34,6 +34,32 @@ const mapsImgs = {
     "Laberynth3": "https://i.ibb.co/b6r5K7W/Laberynth-level-3.jpg",
 };
 
+const stages = {
+    0 : "stageMagma",
+    1 : "stageWater",
+    2 : "stageSnow",
+    3 : "stageSand",
+    4 : "stageJungle",
+    5 : "stageLaberynth",
+    6 : "EndGame"
+};
+const stagesNames = {
+    0 : "Magma",
+    1 : "Water",
+    2 : "Snow",
+    3 : "Sand",
+    4 : "Jungle",
+    5 : "Laberynth",
+    6 : "Game"
+};
+
+let dirAreas = undefined;
+let stageName;
+let mapNumber = 0;
+let bgnMap;
+let collitionAreas;
+let wallsLimitsAreas;
+
 // --- banners ---
 let imgBanCaveman = new Image();
 imgBanCaveman.src = "https://i.ibb.co/7NqLC7M/banner-start.png";
@@ -103,9 +129,25 @@ const activeBtnPad = "https://i.ibb.co/f02frFs/up.png";
 const conversationImg = new Image();
 conversationImg.src = "https://i.ibb.co/znwrRzK/conversation.png";
 
+// -- buttons Values -- 
+const btnsValues = {
+    "A" : ["t","t","f","t"],
+    "B" : ["f","t","t","t"],
+    "C" : ["f","t","f","t"],
+    "D" : ["t","t","t","f"],
+    "E" : ["t","f","t","t"],
+    "F" : ["t","f","t","f"], 
+    "G" : ["t","t","f","f"],
+    "H" : ["f","f","t","t"],
+    "I" : ["f","t","t","f"],
+    "J" : ["t","f","f","t"],
+    "K" : ["f","f","t","f"],
+    "L" : ["t","f","f","f"],
+    "M" : ["f","f","f","t"],
+    "N" : ["f","t","f","f"]
+};
 // --- Values in windows ---
 const messagesValues = [];
-
 
 const startG = {
     "id": "startG",
@@ -148,22 +190,6 @@ const dinoFound = {
     "bottomText": "You have found Rocko",
     "btnText": "Play Again"
 };
-const btnsValues = {
-    "A" : ["t","t","f","t"],
-    "B" : ["f","t","t","t"],
-    "C" : ["f","t","f","t"],
-    "D" : ["t","t","t","f"],
-    "E" : ["t","f","t","t"],
-    "F" : ["t","f","t","f"], 
-    "G" : ["t","t","f","f"],
-    "H" : ["f","f","t","t"],
-    "I" : ["f","t","t","f"],
-    "J" : ["t","f","f","t"],
-    "K" : ["f","f","t","f"],
-    "L" : ["t","f","f","f"],
-    "M" : ["f","f","f","t"],
-    "N" : ["f","t","f","f"]
-};
 
 messagesValues.push(startG);
 messagesValues.push(timeUp);
@@ -171,34 +197,6 @@ messagesValues.push(gameO);
 messagesValues.push(stagePass);
 messagesValues.push(dinoInfo);
 messagesValues.push(dinoFound);
-
-
-const stages = {
-    0 : "stageMagma",
-    1 : "stageWater",
-    2 : "stageSnow",
-    3 : "stageSand",
-    4 : "stageJungle",
-    5 : "stageLaberynth",
-    6 : "EndGame"
-};
-const stagesNames = {
-    0 : "Magma",
-    1 : "Water",
-    2 : "Snow",
-    3 : "Sand",
-    4 : "Jungle",
-    5 : "Laberynth",
-    6 : "Game"
-};
-
-let dirAreas = undefined;
-let stageName;
-let mapNumber = 0;
-let bgnMap;
-let collitionAreas;
-let wallsLimitsAreas;
-
 
 // ---Function to fill up Array with maps images ---
 let arrayImgMaps = [];

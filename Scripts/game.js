@@ -70,8 +70,6 @@ let active;
 let extraTime = 0;
 let liveSet = false
 
-
-
 let btnExitWindow = document.createElement("button");
 btnExitWindow.classList.add("btnMessStyle", "btnHov");
 btnExitWindow.innerHTML =  "Exit";
@@ -105,32 +103,6 @@ function filter_GO_TU() {
 }
 
 
-function escuchador(evento){
-    switch(evento.keyCode){
-        case arrows["left"]:
-            btnLeft();
-            break;
-        case arrows["up"]:
-            btnUp();
-            break;
-        case arrows["right"]:
-            btnRight()
-            break;
-        case arrows["down"]:
-            btnDown();
-            break;
-        default:
-            console.log("wall");
-    };
-};
-
-function defaultKeyValues(){
-    arrows["up"] = 38;
-    arrows["right"] = 39;
-    arrows["down"] = 40;
-    arrows["left"] = 37;
-}
-
 function defaulValues(){
     beginningWindow = true;
     statusWindow = false;
@@ -154,6 +126,33 @@ function resetValuesStart(){
     lives = 3;
     defaulValues();
 };
+
+
+function escuchador(evento){
+    switch(evento.keyCode){
+        case arrows["left"]:
+            btnLeft();
+            break;
+        case arrows["up"]:
+            btnUp();
+            break;
+        case arrows["right"]:
+            btnRight()
+            break;
+        case arrows["down"]:
+            btnDown();
+            break;
+        default:
+            console.log("wall");
+    };
+};
+function defaultKeyValues(){
+    arrows["up"] = 38;
+    arrows["right"] = 39;
+    arrows["down"] = 40;
+    arrows["left"] = 37;
+}
+
 
 function btnUp(){
     if( !( playerPos["y"] < elementSize) ){
@@ -436,7 +435,6 @@ function disableBtnsMsgs(){
     btnStatusWindow.disabled = true;
     btnExitWindow.classList.remove("btnHov");
     btnStatusWindow.classList.remove("btnHov");
-
 };
 function enableBtnsMsgs(){
     btnExitWindow.disabled = false;
@@ -444,7 +442,6 @@ function enableBtnsMsgs(){
     btnExitWindow.classList.add("btnHov");
     btnStatusWindow.classList.add("btnHov");
 };
-
 
 
 function printLives(){
@@ -519,7 +516,6 @@ function levelDone(){
         lives = 3;
     }
 };
-
 
 
 function beginningWindowFnc(){
