@@ -6,7 +6,7 @@
     --regular: 400;
     --medium: 500;
     --bold: 700;
-    --black: 900;
+    --extraBold: 900;
     --style: normal;
 
     /* Colors */
@@ -175,6 +175,25 @@ canvas{
 }
 .winMessage p{
     margin: 0px;
+}
+.difficultyCont {
+    width: 300px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btnDiffStyle {
+    width: 95px;
+    height: 45px;
+    border-radius: 10px;
+    font-family: var(--roboto);
+    font-weight: var(--extraBold);
+    font-size: var(--medium);
+}
+.btnDiffStyle:hover {
+    background-color: var(--darkOrange);
+    cursor: pointer;
 }
 .clTop {
     width: 250px;

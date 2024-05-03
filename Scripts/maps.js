@@ -76,21 +76,21 @@ imgBanPetFound.src = "https://i.ibb.co/bzZxJwy/banner-pet-found.png";
 
 // --- caveman status ---
 let imgStartG = new Image();
-imgStartG.src = "https://i.ibb.co/GsYSjWq/start-shell.png";
+imgStartG.src = "https://i.ibb.co/NyLZxWg/start-shell.png";
 let imgInfo = new Image();
-imgInfo.src = "https://i.ibb.co/xMbmNK3/pet-info-dino.png";
+imgInfo.src = "https://i.ibb.co/PYZtBcn/pet-info-dino.png";
 let imgFound = new Image();
-imgFound.src = "https://i.ibb.co/pnYZnqC/pet-found-dino.png";
+imgFound.src = "https://i.ibb.co/4sHJTsh/pet-found-dino.png";
 
 let imgGameOver = new Image();
-imgGameOver.src = "https://i.ibb.co/0Kg9Xj3/game-over.png";
+imgGameOver.src = "https://i.ibb.co/BgWvFzM/game-over.png";
 let imgTime = new Image();
-imgTime.src = "https://i.ibb.co/DbYcDH5/time-up.png";
+imgTime.src = "https://i.ibb.co/RNL40f3/time-up.png";
 
 // --- Caveman ----
 // --- Walk ---
 let imgCavMan = new Image();
-imgCavMan.src = "https://i.ibb.co/wRk3fdQ/walk.png";
+imgCavMan.src = "https://i.ibb.co/d7DtJgt/walk.png";
 
 
 // --- falling ---
@@ -119,7 +119,7 @@ const noEnough = new Image();
 noEnough.src = "https://i.ibb.co/jyWZfv6/no-enough.png";
 
 // --- icon live img ---
-const iconLive = "https://i.ibb.co/8NL6r1D/icon-live.png";
+const iconLive = "https://i.ibb.co/Wy5vn9t/icon-live.png";
 
 // --- btns imgs ---
 const inactiveBtnPad = "https://i.ibb.co/Byq15D6/up-Dissabled.png";
@@ -154,7 +154,7 @@ const startG = {
     "topBanner": imgBanCaveman,
     "middleImg": imgStartG,
     "hisText": "Help Link to find his friendly pet Rocko.",
-    "bottomText": "Press Start To Play",
+    "bottomText": "Select Difficulty",
 };
 const timeUp = {
     "id": "timeUp",
@@ -390,18 +390,6 @@ let mapsInfo = {
     },
     "stageIce":{
         "areas" : [
-        //     `
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPFP
-        //     PPPPPPPPPP
-        //     PPPPPPPPSP
-        //     PPPPPPPPPP
-        // `,
         `
             PPPCCPPPPP
             PCPCCPCCCP
@@ -467,18 +455,6 @@ let mapsInfo = {
     },
     "stageSand":{
         "areas" : [
-        //     `
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PSPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PFPPPPPPPP
-        //     PPPPPPPPPP
-        // `,
         `
             PPPPPPPPPC
             PCCCCCCPPP
@@ -544,18 +520,6 @@ let mapsInfo = {
     },
     "stageJungle":{
         "areas" : [
-        //     `
-        //     PPPPPPPPPP
-        //     PSPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PPPPPPPPPP
-        //     PFPPPPPPPP
-        //     PPPPPPPPPP
-        // `,
         `
             CPPPCPPPPP
             PSCPPPCCCP
@@ -661,41 +625,43 @@ let mapsInfo = {
     }
 };
 let wallsLimits = {
-    "stageLaberynth": [`
-        ICBHICCCCH
-        GHFFGCHNHF
-        IJFGCHDHDJ
-        GHGCHFFFFK
-        IAMIJLFFFF
-        FIHFICJFFF
-        FFGJGHIJFF
-        FFNCCJFIAJ
-        FGCCCCJGBM
-        GCMNCCCCAM
-    `,
-    `
-        IHIHIBJIBH
-        FFFGJLIJFF
-        FFFICCAMFF
-        FFGAHNHIJG
-        FGHGACEFIH
-        FNACHNEGJF
-        DCHNAHDCMF
-        GHGHKFLIHF
-        IAMFFGHFGE
-        GMIJGCAJNJ
-    ` ,
-    `
-        ICCMIHDCCH
-        FIHIJGJICE
-        GJFFICBJKF
-        IMFFGHFIJF
-        GCAJIJLFIJ
-        IMIMGBCJFI
-        FIJICEIMGJ
-        FGCJNEDCHI
-        DCHNBJGHDJ
-        GHGCACCJGM
-    `]
+    "stageLaberynth": [
+        `
+            ICBHICCCCH
+            GHFFGCHNHF
+            IJFGCHDHDJ
+            GHGCHFFFFK
+            IAMIJLFFFF
+            FIHFICJFFF
+            FFGJGHIJFF
+            FFNCCJFIAJ
+            FGCCCCJGBM
+            GCMNCCCCAM
+        `,
+        `
+            IHIHIBJIBH
+            FFFGJLIJFF
+            FFFICCAMFF
+            FFGAHNHIJG
+            FGHGACEFIH
+            FNACHNEGJF
+            DCHNAHDCMF
+            GHGHKFLIHF
+            IAMFFGHFGE
+            GMIJGCAJNJ
+        ` ,
+        `
+            ICCMIHDCCH
+            FIHIJGJICE
+            GJFFICBJKF
+            IMFFGHFIJF
+            GCAJIJLFIJ
+            IMIMGBCJFI
+            FIJICEIMGJ
+            FGCJNEDCHI
+            DCHNBJGHDJ
+            GHGCACCJGM
+        `
+    ]
 };
 

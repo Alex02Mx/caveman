@@ -51,8 +51,9 @@ let current = "startG";
 let stCount = 0;
 let level = 1;
 let timeStart = undefined;
-let amountTime = 40;
-let counter = amountTime;
+let amountTime;
+let counter;
+
 let timeRep = undefined;
 let maxLength;
 let lives = 3;
@@ -239,6 +240,23 @@ function fillObjLevels(){
     objSeconds[level] = timeMsg.innerHTML;
 };
 
+
+function selectDiffFunc(event){
+    if(event.srcElement.innerText == "Easy"){
+        amountTime = 40;
+        console.log("easy");
+    }
+    else if(event.srcElement.innerText == "Medium"){
+        amountTime = 30;
+        console.log("medium");
+    }
+    else if(event.srcElement.innerText == "Hard"){
+        amountTime = 25;
+        console.log("hard");
+    }
+    startGame();
+    
+}
 
 function setCanvasSize(){
     if(recordPos == true){
@@ -546,12 +564,34 @@ function beginningWindowFnc(){
     msgBeginningWindow.innerHTML = active["bottomText"];
     msgBeginningCont.append(msgBeginningWindow);
 
-    const btnBeginningWindow = document.createElement("button");
-    btnBeginningWindow.classList.add("btnMessStyle", "btnHov");
-    btnBeginningWindow.innerHTML = "Start";
-    btnBeginningWindow.addEventListener("click", startGame);
+    const beginningOptCont = document.createElement("div");
+    const radiosCont = document.createElement("div");
+    const btnCont =document.createElement("div");
 
-    winMessage.append(bannerBeginningWindow, imgBeginningWindow, hisContainer, msgBeginningCont, btnBeginningWindow);
+  
+    const difficultyCont = document.createElement("div");
+    difficultyCont.classList.add("difficultyCont");
+
+
+    const arrayDiffNames = ["Easy", "Medium", "Hard"];
+
+    arrayDiffNames.forEach((nom, i) => {
+        const btnBeginningWindow = document.createElement("button");
+        btnBeginningWindow.classList.add("btnDiffStyle", "btnDiff" + "_" + i);
+        btnBeginningWindow.innerText = nom;
+        btnBeginningWindow.addEventListener("click", selectDiffFunc);
+        difficultyCont.append(btnBeginningWindow);
+    })
+    
+    // const btnBeginningWindow = document.createElement("button");
+    // btnBeginningWindow.classList.add("btnMessStyle", "btnHov");
+    // btnBeginningWindow.innerHTML = "Start";
+    // btnBeginningWindow.addEventListener("click", startGame);
+
+   
+
+
+    winMessage.append(bannerBeginningWindow, imgBeginningWindow, hisContainer, msgBeginningCont, difficultyCont );
 };
 function statusWindowFnc(){
     recordPos = false;
@@ -661,6 +701,7 @@ function levelPassWindow(){
 
 function startTimer(){
     document.documentElement.style.setProperty("--colorChange", "#04d112");
+    counter = amountTime;
     counter+= extraTime;
     extraTime = 0;
     timeMsg.innerHTML = counter;
@@ -684,10 +725,10 @@ function couterColor(){
     if(counter >= 20 && counter <= 40){
         document.documentElement.style.setProperty("--colorChange", "#04d112");
     }
-    else if(counter >= 10 && counter < 20){
+    else if(counter >= 5 && counter < 15){
         document.documentElement.style.setProperty("--colorChange", "#ffff00");
     }
-    else if(counter > 0 && counter < 10){
+    else if(counter > 0 && counter < 5){
         document.documentElement.style.setProperty("--colorChange", "#ff0000");
     };
 };
@@ -707,7 +748,7 @@ function printcount(){
     }
     else{
         clearInterval(intervIncre);
-        if(totalTimeLeft >= 100) {
+        if(totalTimeLeft >= 80) {
             priceCont.appendChild(plusLive);
             plusLive.classList.add("cl1up");
             if(!liveSet){
@@ -715,7 +756,7 @@ function printcount(){
                 liveSet = true;            };
             printLives();
         }
-        else if(totalTimeLeft > 50 && totalTimeLeft < 100){
+        else if(totalTimeLeft > 40 && totalTimeLeft < 80){
             priceCont.appendChild(plusSeconds);
             plusSeconds.classList.add("cl20sec");
             extraTime = 10;
@@ -737,28 +778,3 @@ function counting(){
     intervIncre = setInterval(printcount, 25);
 };
 
-
-// --- function record ---
-
-// if( !(localStorage.getItem("record")) ){
-//     localStorage.setItem("record", 0);
-// };
-// levelMsg.innerHTML = localStorage.getItem("record");
-
-// let timePlayer;
-// function printTime(){
-//     timePlayer = Date.now() - timeStart;
-//     timeMsg.innerHTML = timePlayer;
-// };
-// function printRecord(){
-//     timePlayer = recordMsg.value;
-//     if(localStorage.getItem("record") == 0 || localStorage.getItem("record") > timePlayer){
-//         localStorage.setItem("record", timePlayer);
-//         recordMsg.innerHTML = localStorage.getItem("record");
-//         current = "winnerGR";
-//         messageWindow();
-//     }else{
-//         current = "winnerGNR";
-//         messageWindow();
-//     }
-// };
