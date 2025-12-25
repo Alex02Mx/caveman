@@ -21,7 +21,7 @@ const mapsImgs = {
     "Sand2": "https://i.ibb.co/MCDsR0C/Sand-level-2.jpg",
     "Sand3": "https://i.ibb.co/fS057Wd/Sand-level-3.jpg",
     "Sand4": "https://i.ibb.co/Z1bg7yp/Sand-level-4.jpg",
-    "Sand5": "https://i.ibb.co/N7C4n4Z/Sand-level-5.jpg",
+    "Sand5": "https://i.ibb.co/gT5thhG/Sand-level-5.jpg",
 
     "Jungle1": "https://i.ibb.co/chRVztj/Jungle-level-1.jpg",
     "Jungle2": "https://i.ibb.co/17K4q3W/Jungle-level-2.jpg",
